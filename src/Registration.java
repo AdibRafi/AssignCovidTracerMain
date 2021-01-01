@@ -1,5 +1,7 @@
 //Registration for customer to register into the system
 
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.*;
 
 class Register{
@@ -60,7 +62,12 @@ public class Registration {
             register.setPhoneNo(phoneNo);
 
             printRegisterData(register);
+            String y = setArray(register);
+            fileStuff file = new fileStuff();
+            file.fileWriting("registerStuff",y);
 
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -70,5 +77,16 @@ public class Registration {
         System.out.println(register.getPassword());
         System.out.println(register.getPhoneNo());
     }
+    public static String setArray(Register register){
+        ArrayList<String> arr = new ArrayList<>();
+        arr.add(register.getFirstName());
+        arr.add(register.getLastName());
+        arr.add(register.getPassword());
+        arr.add(Long.toString(register.getPhoneNo()));
+        String x =  arr.toString();
+        return x;
+    }
+
+
 }
 
