@@ -62,12 +62,14 @@ public class Registration {
             register.setPhoneNo(phoneNo);
 
             printRegisterData(register);
+
             String y = setArray(register);
             fileStuff file = new fileStuff();
             file.fileWriting("registerStuff",y);
 
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 
@@ -86,7 +88,5 @@ public class Registration {
         String x =  arr.toString();
         return x;
     }
-
-
 }
 

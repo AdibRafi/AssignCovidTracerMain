@@ -2,10 +2,11 @@
 //login menu for customer to login into the system
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Login {
     public static void main(String[] args) {
-        try(Scanner input = new Scanner(System.in)){
+        Scanner input = new Scanner(System.in);
 
             System.out.print("Enter username : ");
             String userName = input.nextLine();
@@ -18,8 +19,9 @@ public class Login {
             }else{
                 System.out.println("Invalid username or password.");
             }
-        }
+
 
 
     }
+
 }
