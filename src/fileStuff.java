@@ -1,5 +1,7 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,5 +18,11 @@ public class fileStuff {
             result.add(data);
         }
         return result;
+    }
+    // [firstname,lastname,password,phoneNo.]
+    public void fileWriting(String fileName,String arr)throws IOException{
+        FileWriter file = new FileWriter(fileName);
+        file.write(arr);
+        file.close();
     }
 }
