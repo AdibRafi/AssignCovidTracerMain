@@ -1,11 +1,8 @@
-import com.sun.source.tree.WhileLoopTree;
-
 import java.io.*;
 import java.util.*;
 
 public class fileStuff {
-    private String fileName;
-    fileStuff(){}
+    private final String fileName;
     fileStuff(String fileName){this.fileName = fileName;}
     public void fileWriting(String arr)throws IOException {
         FileWriter writer = new FileWriter(fileName);
@@ -43,11 +40,11 @@ public class fileStuff {
         writer.flush();
     }
     public void sortDate()throws IOException{
-        fileStuff f = new fileStuff();
+        fileStuff f = new fileStuff(fileName);
         String[][] input = f.getFileReading();
         Scanner inputSys = new Scanner(System.in);
-        String inputUser = inputSys.nextLine();
         System.out.println("Which column do you want to sort?");
+        String inputUser = inputSys.nextLine();
 
         switch (inputUser){
             case "1" -> Arrays.sort(input,Comparator.comparing(o -> o[0]));
@@ -56,6 +53,7 @@ public class fileStuff {
         }
         System.out.println("dah");
         System.out.println(Arrays.deepToString(input));
+        f.fileWriting(input);
 
     }
 }
