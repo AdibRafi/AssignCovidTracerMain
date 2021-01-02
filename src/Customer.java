@@ -1,4 +1,6 @@
- import java.util.Random;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Customer {

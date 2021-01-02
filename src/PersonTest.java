@@ -21,7 +21,9 @@ public class PersonTest {
         //with Polymorphism
         System.out.println("With Polymorphism");
         Person[] persons = {
-                new Person("Abu","Normal"), new Person("Ben", "Close"), new Person("James", "Case"), new Person("Donna", "Normal")
+                new Person("Tyson","Normal"), new Person("Ben", "Close"),
+                new Person("Abu", "Case"), new Person("Donna", "Normal"),
+                new Person("Asri","Close")
         };
         for (Person obj : persons)
             System.out.println(obj);
