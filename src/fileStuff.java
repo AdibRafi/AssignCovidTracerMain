@@ -1,3 +1,5 @@
+import com.sun.source.tree.WhileLoopTree;
+
 import java.io.*;
 import java.util.*;
 
@@ -24,6 +26,11 @@ public class fileStuff {
         }
         return result;
     }
+    public String[] getFileReading1row() throws IOException{
+        Scanner input = new Scanner(new File(fileName));
+        String result[] = input.nextLine().split(",");
+        return result;
+    }
     public void fileWriting(String[][] strings) throws IOException{
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
         for (int i = 0; i < strings.length; i++) {
@@ -37,7 +44,7 @@ public class fileStuff {
     }
     public void sortDate()throws IOException{
         fileStuff f = new fileStuff();
-        String[][] input = f.getFileReading(fileName);
+        String[][] input = f.getFileReading();
         Scanner inputSys = new Scanner(System.in);
         String inputUser = inputSys.nextLine();
         System.out.println("Which column do you want to sort?");
@@ -50,21 +57,6 @@ public class fileStuff {
         System.out.println("dah");
         System.out.println(Arrays.deepToString(input));
 
-    }
-
-    private String[][] getFileReading(String fileName) throws FileNotFoundException {
-        Scanner input = new Scanner(new File(this.fileName = fileName));
-        List<String[]> lines = new ArrayList<>();
-        while (input.hasNextLine()){
-            String line = input.nextLine();
-            String[] lineSplit = line.split(",");
-            lines.add(lineSplit);
-        }
-        String[][] result = new String[lines.size()][];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = lines.get(i);
-        }
-        return result;
     }
 }
 
