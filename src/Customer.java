@@ -31,7 +31,7 @@ class custStatus extends Customer{
         this.status = status;
     }
     void display() {
-        if (status == "COVID-19 Negative"){
+        if (status.equals("COVID-19 Negative")){
             System.out.println("Customer is a normal");
         }
         else if(status == ""){
