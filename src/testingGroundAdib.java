@@ -6,9 +6,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class testingGroundAdib {
     public static void main(String[] args) throws IOException {
-        Admin d = new Admin();
-        d.randomGenerator();
+        editStuff d = new editStuff("MasterFileAdmin");
+        d.randomGeneratorMaster();
         fileStuff f = new fileStuff("CustomerFileAdmin");
+
         String[][] readFirstFile = f.getFileReading();
         ArrayList<String> caseName = new ArrayList<>();
         for (int i = 0; i < readFirstFile.length; i++) {
@@ -32,6 +33,10 @@ public class testingGroundAdib {
         caseShop.clear();
         caseShop.addAll(set);
         System.out.println(caseShop);
+
+        // THIRD FLOW
+        f = new fileStuff("CustomerFile");
+        String[][] readThirdFile = f.getFileReading();
 
 //        String[] input = caseShop.toArray(new String[0]);
 //        String current = caseShop.get(0);
@@ -101,7 +106,6 @@ public class testingGroundAdib {
 //            temps.add(data);
 //        }
 //        System.out.println(temps);
-        Admin x = new Admin();
 //        String[] test = x.getName().toArray(new String[0]);
 //        System.out.println(test[0]);
     }
