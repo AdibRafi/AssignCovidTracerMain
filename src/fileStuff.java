@@ -2,7 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class fileStuff {
-    private final String fileName;
+    private String fileName;
+    fileStuff(){}
     fileStuff(String fileName){this.fileName = fileName;}
     public void fileWriting(String arr)throws IOException {
         FileWriter writer = new FileWriter(fileName);
@@ -39,8 +40,28 @@ public class fileStuff {
         }
         writer.flush();
     }
+//    public void sortDate()throws IOException{
+//        fileStuff f = new fileStuff(fileName);
+//        String[][] input = f.getFileReading();
+//        Scanner inputSys = new Scanner(System.in);
+//        System.out.println("Which column do you want to sort?");
+//        String inputUser = inputSys.nextLine();
+//
+//        switch (inputUser){
+//            case "1" -> Arrays.sort(input,Comparator.comparing(o -> o[0]));
+//            case "2" -> Arrays.sort(input,Comparator.comparing(o -> o[1]));
+//            default -> System.out.println("Input error");
+//        }
+//        System.out.println("dah");
+//        System.out.println(Arrays.deepToString(input));
+//        f.fileWriting(input);
+//
+//    }
+}
+
+class editStuff extends fileStuff{
     public void sortDate()throws IOException{
-        fileStuff f = new fileStuff(fileName);
+        fileStuff f = new fileStuff(super.toString());
         String[][] input = f.getFileReading();
         Scanner inputSys = new Scanner(System.in);
         System.out.println("Which column do you want to sort?");

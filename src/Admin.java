@@ -42,7 +42,7 @@ public class Admin {
 
         String[] name = {
                 "Adib", "Ali", "Adam", "Darwisy",
-                "Harri", "Shuhail", "Arif", "Azri",
+                "Harri", "Shuhail", "Raja", "Azri",
                 "Imran", "Elijah", "Ahmad"};
 
         String[] shop = {

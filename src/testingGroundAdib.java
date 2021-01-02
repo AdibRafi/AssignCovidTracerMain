@@ -6,9 +6,53 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class testingGroundAdib {
     public static void main(String[] args) throws IOException {
-
         Admin d = new Admin();
         d.randomGenerator();
+        fileStuff f = new fileStuff("CustomerFileAdmin");
+        String[][] readFirstFile = f.getFileReading();
+        ArrayList<String> caseName = new ArrayList<>();
+        for (int i = 0; i < readFirstFile.length; i++) {
+            if (readFirstFile[i][2].equals("Case"))
+                caseName.add(readFirstFile[i][0]);
+        }
+        System.out.println(caseName); // ARRAYLIST
+
+        f = new fileStuff("MasterFileAdmin");
+        String[][] readSecondFile = f.getFileReading();
+        ArrayList<String> caseShop = new ArrayList<>();
+        ArrayList<String> caseDate = new ArrayList<>();
+        for (int i = 0; i < caseName.size(); i++) {
+            for (int j = 0; j < readSecondFile.length; j++) {
+                if (readSecondFile[j][2].equals(caseName.get(i)))
+                    caseShop.add(readSecondFile[j][3]);
+            }
+        }
+        System.out.println(caseShop);
+        Set<String> set = new HashSet<String>(caseShop);
+        caseShop.clear();
+        caseShop.addAll(set);
+        System.out.println(caseShop);
+
+//        String[] input = caseShop.toArray(new String[0]);
+//        String current = caseShop.get(0);
+//        boolean found = false;
+
+
+
+//        for (int i = 0; i < input.length; i++) {
+//            if (current.equals(input[i]) && !found) {
+//                found = true;
+//            } else if (!current.equals(input[i])) {
+//                caseShop.add(current);
+//                current = input[i];
+//                found = false;
+//            }
+//        }
+//        System.out.println(caseShop.size());
+
+
+//        Admin d = new Admin();
+//        d.randomGenerator();
 //        Random rand = new Random();
 //        Date now = new Date();
 //        long timeRangeMs = 1000 * 60 * 60 * 24; // 3 hours in ms
