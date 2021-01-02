@@ -64,8 +64,8 @@ public class Registration {
             printRegisterData(register);
 
             String y = setArray(register);
-            fileStuff file = new fileStuff();
-            file.fileWriting("registerStuff",y);
+            fileStuff file = new fileStuff("registerStuff");
+            file.fileWriting(y);
 
         } catch (IOException e) {
             e.printStackTrace();
