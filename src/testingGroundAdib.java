@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class testingGroundAdib {
     public static void main(String[] args) throws IOException {
-        editStuff d = new editStuff("MasterFileAdmin");
+        editStuff d = new editStuff();
         d.randomGeneratorMaster();
         fileStuff f = new fileStuff("CustomerFileAdmin");
 
@@ -18,7 +18,7 @@ public class testingGroundAdib {
         }
         System.out.println(caseName); // ARRAYLIST
 
-        f = new fileStuff("MasterFileAdmin");
+        f = new fileStuff("MasterFile");
         String[][] readSecondFile = f.getFileReading();
         ArrayList<String> caseShop = new ArrayList<>();
         ArrayList<String> caseDate = new ArrayList<>();

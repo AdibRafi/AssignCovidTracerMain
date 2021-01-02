@@ -117,7 +117,7 @@ class editStuff extends fileStuff{
             finalResult[i] = firstResult.get(i);
         }
 
-        fileStuff f = new fileStuff("MasterFileAdmin");
+        fileStuff f = new fileStuff("MasterFile");
         f.fileWriting(finalResult);
 
     }
