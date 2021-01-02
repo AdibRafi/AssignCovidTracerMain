@@ -5,9 +5,8 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class testingGroundAdib {
-    public static void main(String[] args) throws IOException {
-        editStuff d = new editStuff();
-        d.randomGeneratorMaster();
+    public static void main(String[] args) throws IOException,IllegalArgumentException {
+        //first Row (get the case)
         fileStuff f = new fileStuff("CustomerFileAdmin");
 
         String[][] readFirstFile = f.getFileReading();
@@ -18,14 +17,18 @@ public class testingGroundAdib {
         }
         System.out.println(caseName); // ARRAYLIST
 
-        f = new fileStuff("MasterFile");
+        //second row(get the name n time)
+        f = new fileStuff("MasterFileAdmin");
         String[][] readSecondFile = f.getFileReading();
         ArrayList<String> caseShop = new ArrayList<>();
         ArrayList<String> caseDate = new ArrayList<>();
         for (int i = 0; i < caseName.size(); i++) {
             for (int j = 0; j < readSecondFile.length; j++) {
-                if (readSecondFile[j][2].equals(caseName.get(i)))
+                if (readSecondFile[j][2].equals(caseName.get(i))) {
                     caseShop.add(readSecondFile[j][3]);
+                    caseDate.add(readSecondFile[j][0]+","+
+                            readSecondFile[j][1]);
+                }
             }
         }
         System.out.println(caseShop);
@@ -33,9 +36,16 @@ public class testingGroundAdib {
         caseShop.clear();
         caseShop.addAll(set);
         System.out.println(caseShop);
+        System.out.println(caseDate);
+        String[] test = caseDate.toArray(new String[0]);
+        System.out.println(Arrays.toString(test));
+        for (int i = 0; i < caseDate.size(); i++) {
+        // how tf nak get date n time?!?!
+        }
+        System.out.println("lol");
 
         // THIRD FLOW
-        f = new fileStuff("CustomerFile");
+        f = new fileStuff("CustomerFileAdmin");
         String[][] readThirdFile = f.getFileReading();
 
 //        String[] input = caseShop.toArray(new String[0]);
