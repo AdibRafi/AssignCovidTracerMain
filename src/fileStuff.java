@@ -11,9 +11,12 @@ public class fileStuff {
     public String toString(){
         return fileName;
     }
-    public void fileWriting(String arr)throws IOException {
-        FileWriter writer = new FileWriter(fileName);
-        writer.write(arr);
+    public void fileWriting(String[] strings)throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+        for (int j = 0; j < strings.length; j++) {
+            writer.write(strings[j]+
+                    ((j==strings.length-1) ? "" : ","));
+        }
         writer.close();
     }
     public String[][] getFileReading() throws IOException{
@@ -192,10 +195,8 @@ class editStuff extends fileStuff{
 
     }
     public void changeStatus() throws IOException, ParseException {
-        Admin d = new Admin();
         fileStuff f;
         editStuff e;
-        d.displayMaster();
         String[][] readFile;
         System.out.println("Select a number to Flag a customer");
         Scanner input = new Scanner(System.in);
