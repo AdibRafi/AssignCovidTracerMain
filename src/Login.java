@@ -1,6 +1,4 @@
-//First draft-rjd
 //login menu for customer to login into the system
-
 
 import java.io.IOException;
 import java.util.Arrays;
