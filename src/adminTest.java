@@ -32,9 +32,9 @@ public class adminTest {
 
         Admin y = new Admin();
         switch (userInput) {
-            case "1" -> y.displayCustomer(customertest);
-            case "2" -> y.displayShops(shoptest);
-            case "3" -> y.displayMaster(mastertest);
+            case "1" -> y.displayCustomer();
+            case "2" -> y.displayShops();
+            case "3" -> y.displayMaster();
             //case "random" -> y.randomGenerator("adibTest");
             default -> System.out.println("Input Error... try again");
         }
