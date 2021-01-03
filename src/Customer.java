@@ -37,7 +37,7 @@ public class Customer extends MainMenu {
         System.out.println("|      5. Back to main menu  |");
         System.out.println("+============================+");
 
-        Customer c = new Customer();
+        Customer cust = new Customer();
         System.out.println("Please enter your choice: ");
 
         int choice = input.nextInt();
@@ -56,11 +56,11 @@ public class Customer extends MainMenu {
                 System.out.println("Status");
                 break;
             case 5:
-                c.menuSelection();
+                cust.menuSelection();
                 break;
             default:
                 System.out.println("Invalid selection");
-                c.custMenuSelect();
+                cust.custMenuSelect();
                 break;
     }
 
