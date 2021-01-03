@@ -24,7 +24,7 @@ public class Customer extends MainMenu {
 
     public void custMenuSelect(){
         Scanner input = new Scanner(System.in);
-        //Display menu
+        //Display customer menu
         System.out.println("+============================+");
         System.out.println("|   CUSTOMER's SELECTION     |");
         System.out.println("+============================+");

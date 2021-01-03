@@ -8,20 +8,21 @@ public class MainMenu  {
     }
     public void menuSelection() {
         Scanner input = new Scanner(System.in);
-        //Display menu
-        System.out.println("========================");
+        //Display main menu
+        System.out.println("+======================+");
         System.out.println("|    MENU SELECTION    |");
-        System.out.println("========================");
+        System.out.println("+======================+");
         System.out.println("| Options:             |");
         System.out.println("|       1. Customer    |");
         System.out.println("|       2. Shop        |");
         System.out.println("|       3. Admin       |");
         System.out.println("|       4. Exit        |");
-        System.out.println("========================");
+        System.out.println("+======================+");
 
 
         MainMenu mMenu = new MainMenu();
-        Customer cSelect = new Customer();
+        Customer cuSelect = new Customer();
+        Shop shSelect = new Shop();
         System.out.println("Please enter your choice: ");
 
         //get user's choice
@@ -29,10 +30,10 @@ public class MainMenu  {
 
         switch (choice) {
             case 1:
-                cSelect.custMenuSelect();
+                cuSelect.custMenuSelect();
                 break;
             case 2:
-                System.out.println("shop");
+                shSelect.shopMenuSelect();
                 break;
             case 3:
                 System.out.println("admin");
