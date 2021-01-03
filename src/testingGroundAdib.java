@@ -5,10 +5,69 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class testingGroundAdib {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException,IllegalArgumentException {
+        //first Row (get the case)
+        fileStuff f = new fileStuff("CustomerFileAdmin");
 
-        Admin d = new Admin();
-        d.randomGenerator();
+        String[][] readFirstFile = f.getFileReading();
+        ArrayList<String> caseName = new ArrayList<>();
+        for (int i = 0; i < readFirstFile.length; i++) {
+            if (readFirstFile[i][2].equals("Case"))
+                caseName.add(readFirstFile[i][0]);
+        }
+        System.out.println(caseName); // ARRAYLIST
+
+        //second row(get the name n time)
+        f = new fileStuff("MasterFileAdmin");
+        String[][] readSecondFile = f.getFileReading();
+        ArrayList<String> caseShop = new ArrayList<>();
+        ArrayList<String> caseDate = new ArrayList<>();
+        for (int i = 0; i < caseName.size(); i++) {
+            for (int j = 0; j < readSecondFile.length; j++) {
+                if (readSecondFile[j][2].equals(caseName.get(i))) {
+                    caseShop.add(readSecondFile[j][3]);
+                    caseDate.add(readSecondFile[j][0]+","+
+                            readSecondFile[j][1]);
+                }
+            }
+        }
+        System.out.println(caseShop);
+        Set<String> set = new HashSet<String>(caseShop);
+        caseShop.clear();
+        caseShop.addAll(set);
+        System.out.println(caseShop);
+        System.out.println(caseDate);
+        String[] test = caseDate.toArray(new String[0]);
+        System.out.println(Arrays.toString(test));
+        for (int i = 0; i < caseDate.size(); i++) {
+        // how tf nak get date n time?!?!
+        }
+        System.out.println("lol");
+
+        // THIRD FLOW
+        f = new fileStuff("CustomerFileAdmin");
+        String[][] readThirdFile = f.getFileReading();
+
+//        String[] input = caseShop.toArray(new String[0]);
+//        String current = caseShop.get(0);
+//        boolean found = false;
+
+
+
+//        for (int i = 0; i < input.length; i++) {
+//            if (current.equals(input[i]) && !found) {
+//                found = true;
+//            } else if (!current.equals(input[i])) {
+//                caseShop.add(current);
+//                current = input[i];
+//                found = false;
+//            }
+//        }
+//        System.out.println(caseShop.size());
+
+
+//        Admin d = new Admin();
+//        d.randomGenerator();
 //        Random rand = new Random();
 //        Date now = new Date();
 //        long timeRangeMs = 1000 * 60 * 60 * 24; // 3 hours in ms
@@ -57,7 +116,6 @@ public class testingGroundAdib {
 //            temps.add(data);
 //        }
 //        System.out.println(temps);
-        Admin x = new Admin();
 //        String[] test = x.getName().toArray(new String[0]);
 //        System.out.println(test[0]);
     }
