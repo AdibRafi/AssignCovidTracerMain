@@ -1,7 +1,6 @@
 //Registration for customer to register into the system
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 class Registration{
@@ -41,26 +40,26 @@ class Registration{
         Registration register = new Registration();
         Scanner input = new Scanner(System.in);
 
-            System.out.print("Enter your first name : ");
-            String firstName = input.nextLine();
-            register.setFirstName(firstName);
+        System.out.print("Enter your first name : ");
+        String firstName = input.nextLine();
+        register.setFirstName(firstName);
 
-            System.out.print("Enter your last name : ");
-            String lastName = input.nextLine();
-            register.setLastName(lastName);
+        System.out.print("Enter your last name : ");
+        String lastName = input.nextLine();
+        register.setLastName(lastName);
 
-            System.out.print("Enter the password : ");
-            String password = input.nextLine();
-            register.setPassword(password);
+        System.out.print("Enter the password : ");
+        String password = input.nextLine();
+        register.setPassword(password);
 
-            System.out.print("Enter your Phone number : ");
-            long phoneNo = input.nextLong();
-            register.setPhoneNo(phoneNo);
+        System.out.print("Enter your Phone number : ");
+        long phoneNo = input.nextLong();
+        register.setPhoneNo(phoneNo);
 
 
-            String[] reg = setArray(register);
-            fileStuff file = new fileStuff("registerStuff");
-            file.fileWriting(reg);
+        String[] reg = setArray(register);
+        fileStuff file = new fileStuff("registerStuff");
+        file.fileWriting(reg);
 
 
     }

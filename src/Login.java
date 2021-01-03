@@ -29,11 +29,11 @@ public class Login extends Registration {
 
         System.out.println(info.getUserName());
 
-            if(userName.equals(info.getUserName()) && password.equals(info.getPassword())){
-                System.out.println("User successfully logined...");
-            }else{
-                System.out.println("Invalid username or password.");
-            }
+        if(userName.equals(info.getUserName()) && password.equals(info.getPassword())){
+            System.out.println("User successfully logined...");
+        }else{
+            System.out.println("Invalid username or password.");
+        }
 
     }
 

@@ -8,9 +8,10 @@ public class Shop extends MainMenu {
         System.out.println("|     SHOP's SELECTION      |");
         System.out.println("+===========================+");
         System.out.println("| Options:                  |");
-        System.out.println("|      1. List of Shops     |");
-        System.out.println("|      2. View status       |");
-        System.out.println("|      3. Back to main menu |");
+        System.out.println("|      1. List of Customer  |");
+        System.out.println("|      2. List of Shops     |");
+        System.out.println("|      3. View status       |");
+        System.out.println("|      4. Back to main menu |");
         System.out.println("+===========================+");
 
         Shop shopSelect = new Shop();
@@ -20,12 +21,14 @@ public class Shop extends MainMenu {
 
         switch (choice) {
             case 1:
-                System.out.println("List of shops");
+                System.out.println("List of Customer");
                 break;
             case 2:
-                System.out.println("Status");
+                System.out.println("List of shops");
                 break;
             case 3:
+                System.out.println("Status");
+            case 4:
                 shopSelect.menuSelection();
                 break;
             default:
