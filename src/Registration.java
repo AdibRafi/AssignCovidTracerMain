@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.*;
 
-class Register{
+class Registration{
     private String firstName;
     private String lastName;
     private String password;
@@ -37,13 +37,9 @@ class Register{
     public void setPhoneNo(long phoneNo){
         this.phoneNo = phoneNo;
     }
-
-}
-public class Registration {
-    public static void main(String[] args) {
-
-        Register register = new Register();
-        try(Scanner input = new Scanner(System.in)){
+    public void startRegister() throws IOException {
+        Registration register = new Registration();
+        Scanner input = new Scanner(System.in);
 
             System.out.print("Enter your first name : ");
             String firstName = input.nextLine();
@@ -61,32 +57,23 @@ public class Registration {
             long phoneNo = input.nextLong();
             register.setPhoneNo(phoneNo);
 
-            printRegisterData(register);
 
-            String reg = setArray(register);
+            String[] reg = setArray(register);
             fileStuff file = new fileStuff("registerStuff");
             file.fileWriting(reg);
 
-        } catch (IOException e) {
-            e.printStackTrace();
 
-        }
     }
 
-    private static void printRegisterData(Register register){
-        System.out.println(register.getFirstName());
-        System.out.println(register.getLastName());
-        System.out.println(register.getPassword());
-        System.out.println(register.getPhoneNo());
-    }
-    public static String setArray(Register register){
+    public static String[] setArray(Registration register){
         ArrayList<String> arr = new ArrayList<>();
         arr.add(register.getFirstName());
         arr.add(register.getLastName());
         arr.add(register.getPassword());
         arr.add(Long.toString(register.getPhoneNo()));
-        String x =  arr.toString();
+        String[] x =  arr.toArray(new String[0]);
         return x;
     }
+
 }
 
