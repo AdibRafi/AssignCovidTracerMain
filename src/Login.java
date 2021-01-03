@@ -20,6 +20,8 @@ public class Login extends Registration {
     }
     public void startLogin() throws IOException {
         Scanner input = new Scanner(System.in);
+        Customer custSelect = new Customer();
+
 
         System.out.print("Enter username : ");
         String userName = input.nextLine();
@@ -31,6 +33,7 @@ public class Login extends Registration {
 
         if(userName.equals(info.getUserName()) && password.equals(info.getPassword())){
             System.out.println("User successfully logined...");
+            custSelect.custMenuSelect();
         }else{
             System.out.println("Invalid username or password.");
         }

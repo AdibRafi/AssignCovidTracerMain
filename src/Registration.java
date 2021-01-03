@@ -39,6 +39,9 @@ class Registration{
     public void startRegister() throws IOException {
         Registration register = new Registration();
         Scanner input = new Scanner(System.in);
+        System.out.println("+=====================================+");
+        System.out.println("|           Registration              |");
+        System.out.println("+=====================================+");
 
         System.out.print("Enter your first name : ");
         String firstName = input.nextLine();

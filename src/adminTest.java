@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class adminTest extends MainMenu {
+public class adminTest{
     public void adminStart() throws IOException {
         editStuff e = new editStuff("MasterFilelol");
         System.out.println("+=============================+");
@@ -16,7 +16,6 @@ public class adminTest extends MainMenu {
 
         System.out.print("Press the number = ");
 
-        MainMenu mMenu = new MainMenu();
         adminTest adminSelect = new adminTest();
         Scanner input = new Scanner(System.in);
         String userInput = input.nextLine();

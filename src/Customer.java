@@ -3,7 +3,7 @@ import java.time.LocalTime;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Customer extends MainMenu {
+public class Customer{
     private String name;
     Customer(){}
     public void custStatus(){
@@ -29,12 +29,11 @@ public class Customer extends MainMenu {
         System.out.println("|   CUSTOMER's SELECTION     |");
         System.out.println("+============================+");
         System.out.println("| Options:                   |");
-        System.out.println("|      1. Register           |");
-        System.out.println("|      2. Check-in a shop    |");
-        System.out.println("|      3. View history of    |");
+        System.out.println("|      1. Check-in a shop    |");
+        System.out.println("|      2. View history of    |");
         System.out.println("|         the shops visited  |");
-        System.out.println("|      4. View status        |");
-        System.out.println("|      5. Back to main menu  |");
+        System.out.println("|      3. View status        |");
+        System.out.println("|      4. Exit               |");
         System.out.println("+============================+");
 
         Customer cust = new Customer();
@@ -44,19 +43,16 @@ public class Customer extends MainMenu {
 
         switch (choice) {
             case 1:
-                System.out.println("Register");
-                break;
-            case 2:
                 System.out.println("Check-in shop");
                 break;
-            case 3:
+            case 2:
                 System.out.println("History of shops visited");
                 break;
-            case 4:
+            case 3:
                 System.out.println("Status");
                 break;
-            case 5:
-                cust.menuSelection();
+            case 4:
+                System.out.println("Thank you for using this program..");
                 break;
             default:
                 System.out.println("Invalid selection");
@@ -65,7 +61,6 @@ public class Customer extends MainMenu {
     }
 
 }
-
 
 
 class custStatus extends Customer{
