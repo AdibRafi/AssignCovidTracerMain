@@ -14,22 +14,6 @@ public class adminTest {
         Scanner input = new Scanner(System.in);
         String userInput = input.nextLine();
 
-        fileStuff x = new fileStuff("CustomerFileAdmin");
-        String[][] customertest = x.getFileReading();
-        x = new fileStuff("ShopFileAdmin");
-        String[][] shoptest = x.getFileReading();
-        x = new fileStuff("MasterFileAdmin");
-        String[][] mastertest= x.getFileReading();
-        String[][] test =  {
-                {"adib","3"},
-                {"darwisy","5"},
-                {"ahmad","6"},
-                {"Azri","10"},
-                {"Abu","23"}};
-
-        x = new fileStuff("testWrite");
-        x.fileWriting(test);
-
         Admin y = new Admin();
         switch (userInput) {
             case "1" -> y.displayCustomer();

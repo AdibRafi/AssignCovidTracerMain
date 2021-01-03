@@ -25,7 +25,7 @@ public class testingGroundAdib {
 
         e = new editStuff("CustomerFileAdmin");
         readFile = e.getFileReading();
-        readFile[userInput][2] = "Case";
+        readFile[userInput-1][2] = "Case";
         e.fileWriting(readFile);
 
         f = new fileStuff("MasterFileAdmin");
@@ -63,6 +63,7 @@ public class testingGroundAdib {
         readFile = f.getFileReading();
         ArrayList<String> possibleCase = new ArrayList<>();
 
+        // getting possible time from other person
         for (int i = 0; i < readFile.length; i++) {
             if (readFile[i][0].equals(caseDate.get(0))){
                 if (readFile[i][3].equals(caseShop.get(0))){
@@ -72,30 +73,34 @@ public class testingGroundAdib {
             }
         }
         System.out.println(possibleCase);
-
+        ArrayList<String> closeName = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        Date possibleTime = sdf.parse(possibleCase.get(0));
         Date possibleTimeFromCase = sdf.parse(caseTime.get(0));
-        long timeDiff = possibleTime.getTime() - possibleTimeFromCase.getTime();
-        int hours = (int) (timeDiff/(1000*60*60)%24);
-        System.out.println(hours);
-
-        if (hours == 0){
-            e = new editStuff("CustomerFileAdmin");
-            readFile = e.getFileReading();
-            for (int i = 0; i < readFile.length ; i++) {
-                 if (readFile[i][0].equals(caseName.get(0))){
-                     if (!readFile[i+1][2].equals("Case"))
-                        readFile[i+1][2] = "Close";
-                 }
+        for (int i = 0; i < possibleCase.size(); i++) {
+            Date possibleTime = sdf.parse(possibleCase.get(i));
+            long timeDiff = possibleTime.getTime() - possibleTimeFromCase.getTime();
+            long x = Math.abs(timeDiff);
+            int hours = (int) (x/(1000*60*60)%24);
+            System.out.println(hours);
+            if (hours ==0 || hours ==11){
+                for (int y = 0; y < readFile.length; y++) {
+                    if (readFile[y][1].equals(possibleCase.get(i)))
+                        closeName.add(readFile[y][2]);
+                }
             }
-            e.fileWriting(readFile);
         }
-
-
-
-
-
+        System.out.println(closeName);
+        e = new editStuff("CustomerFileAdmin");
+        readFile = e.getFileReading();
+        for (int i = 0; i < closeName.size(); i++) {
+            for (int j = 0; j < readFile.length ; j++) {
+                if (readFile[j][0].equals(closeName.get(i))){
+                    if (!readFile[j][2].equals("Case")){
+                        readFile[j][2] = "Close";}
+                }
+            }
+        }
+        e.fileWriting(readFile);
 
     }
 }
