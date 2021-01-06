@@ -283,6 +283,26 @@ class editStuff extends fileStuff{
     }
 }
 
+class customerStuff extends fileStuff{
+    customerStuff(){}
+    customerStuff(String fileName){super(fileName);}
+    public void setInfoIntoAdminFile() throws IOException {
+        fileStuff f = new fileStuff("registerStuff");
+        String[] inputFromRegister = f.getFileReading1row();
+        // CustomerFileAdmin
+        String[] arrayToAdd = {inputFromRegister[0]+inputFromRegister[1],
+        inputFromRegister[3],"Normal"};
+
+        f = new fileStuff("CustomerFileAdmin");
+        String[][] newArray = Arrays.copyOf(f.getFileReading(),
+                f.getFileReading().length+1);
+        newArray[f.getFileReading().length] = arrayToAdd;
+        f.fileWriting(newArray);
+
+    }
+
+}
+
 
 // ARCHIVE
 // Scanner readFile;

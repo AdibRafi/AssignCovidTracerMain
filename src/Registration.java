@@ -7,7 +7,7 @@ class Registration{
     private String firstName;
     private String lastName;
     private String password;
-    private long phoneNo;
+    private String phoneNo;
 
     public String getFirstName(){
         return firstName;
@@ -30,10 +30,10 @@ class Registration{
         this.password = password;
     }
 
-    public long getPhoneNo(){
+    public String getPhoneNo(){
         return phoneNo;
     }
-    public void setPhoneNo(long phoneNo){
+    public void setPhoneNo(String phoneNo){
         this.phoneNo = phoneNo;
     }
     public void startRegister() throws IOException {
@@ -56,13 +56,14 @@ class Registration{
         register.setPassword(password);
 
         System.out.print("Enter your Phone number : ");
-        long phoneNo = input.nextLong();
+        String phoneNo = input.nextLine();
         register.setPhoneNo(phoneNo);
 
 
         String[] reg = setArray(register);
-        fileStuff file = new fileStuff("registerStuff");
+        customerStuff file = new customerStuff("registerStuff");
         file.fileWriting(reg);
+        file.setInfoIntoAdminFile();
 
 
     }
@@ -72,7 +73,7 @@ class Registration{
         arr.add(register.getFirstName());
         arr.add(register.getLastName());
         arr.add(register.getPassword());
-        arr.add(Long.toString(register.getPhoneNo()));
+        arr.add(register.getPhoneNo());
         String[] x =  arr.toArray(new String[0]);
         return x;
     }
