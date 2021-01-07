@@ -27,17 +27,31 @@ public class Login extends Registration {
         String userName = input.nextLine();
         System.out.print("Enter password : ");
         String password = input.nextLine();
-        Login info = new Login();
 
-        System.out.println(info.getUserName());
+        customerStuff f = new customerStuff("registerStuff");
+        String[][] inputFromFile = f.getFileReading();
+        int loop = 0;
 
-        if(userName.equals(info.getUserName()) && password.equals(info.getPassword())){
-            System.out.println("User successfully logined...");
-            custSelect.custMenuSelect();
-        }else{
-            System.out.println("Invalid username or password.");
+        for (int i = 0; i < inputFromFile.length; i++) {
+            if (userName.equals(inputFromFile[i][0]+inputFromFile[i][1])
+            &&password.equals(inputFromFile[i][2])){
+                System.out.println("User successfully logined...");
+                custSelect.custMenuSelect();
+                loop++;
+            }
         }
+        if (loop == 0)
+            System.out.println("Invalid username or password.");
+
+
+//        if(userName.equals(info.getUserName()) && password.equals(info.getPassword())){
+//            System.out.println("User successfully logined...");
+//            custSelect.custMenuSelect();
+//        }else{
+//            System.out.println("Invalid username or password.");
+//        }
 
     }
 
 }
+

@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 public class Start {
     public static void main(String[] args) throws IOException {
+        Start s = new Start();
+        s.startSystem();
+    }
+    public void startSystem() throws IOException {
         Login x = new Login();
         System.out.println("+=====================================+");
         System.out.println("| Welcome to group-7 COVID-19 tracer  |");

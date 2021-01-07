@@ -36,9 +36,12 @@ class Registration{
     public void setPhoneNo(String phoneNo){
         this.phoneNo = phoneNo;
     }
+
     public void startRegister() throws IOException {
         Registration register = new Registration();
         Scanner input = new Scanner(System.in);
+
+        Start user = new Start();
         System.out.println("+=====================================+");
         System.out.println("|           Registration              |");
         System.out.println("+=====================================+");
@@ -59,11 +62,20 @@ class Registration{
         String phoneNo = input.nextLine();
         register.setPhoneNo(phoneNo);
 
+        System.out.println("Register done");
+        user.startSystem();
+
 
         String[] reg = setArray(register);
         customerStuff file = new customerStuff("registerStuff");
-        file.fileWriting(reg);
-        file.setInfoIntoAdminFile();
+//        file.fileWriting(reg);
+//        file.setInfoIntoAdminFile();
+        
+        file = new customerStuff("registerStuff");
+        String[][] newArray = Arrays.copyOf(file.getFileReading(),
+                file.getFileReading().length+1);
+        newArray[file.getFileReading().length] = reg;
+        file.fileWriting(newArray);
 
 
     }
