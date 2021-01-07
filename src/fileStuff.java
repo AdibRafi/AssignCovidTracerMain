@@ -48,6 +48,7 @@ public class fileStuff {
             writer.newLine();
         }
         writer.flush();
+        writer.close();
     }
 }
 

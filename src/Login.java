@@ -48,10 +48,10 @@ public class Login extends Registration {
                         && password.equals(inputFromFile[i][2])) {
                     System.out.println("User successfully logined...");
                     custSelect.custMenuSelect();
-                    setUserName(userName);
-                    setPassword(password);
-                    System.out.println(getLoginUserName());
-                    System.out.println(getLoginPassword());
+//                    setUserName(userName);
+//                    setPassword(password);
+//                    System.out.println(getLoginUserName());
+//                    System.out.println(getLoginPassword());
 
                     loop++;
                 }

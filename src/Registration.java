@@ -62,12 +62,9 @@ class Registration{
         String phoneNo = input.nextLine();
         register.setPhoneNo(phoneNo);
 
-        System.out.println("Register done");
-        user.startSystem();
-
 
         String[] reg = setArray(register);
-        customerStuff file = new customerStuff("registerStuff");
+        customerStuff file;
 //        file.fileWriting(reg);
 //        file.setInfoIntoAdminFile();
         
@@ -77,7 +74,8 @@ class Registration{
         newArray[file.getFileReading().length] = reg;
         file.fileWriting(newArray);
 
-
+        System.out.println("Register done");
+        user.startSystem();
     }
 
     public static String[] setArray(Registration register){

@@ -1,28 +1,32 @@
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Customer{
+public class Customer {
     private String name;
-    Customer(){}
-    public void custStatus(){
-        Customer cs = new custStatus();
 
-        Customer cs2 = new custStatus("Adib", "case");
-        ((custStatus) cs).display();
+    Customer() {
+    }
+//    public void custStatus(){
+//        Customer cs = new custStatus();
+//
+//        Customer cs2 = new custStatus("Adib", "case");
+//        ((custStatus) cs).display();
+//
+//        Random rand = new Random();
+//        String[] randCase = {"COVID-19 Positive", "COVID-19 Negative"};
+//        int randNum = rand.nextInt(2);
+//        Customer cs3 = new custStatus("Darwisy", randCase[randNum]);
+//        System.out.println(cs3);
+//    }
 
-        Random rand = new Random();
-        String[] randCase = {"COVID-19 Positive", "COVID-19 Negative"};
-        int randNum = rand.nextInt(2);
-        Customer cs3 = new custStatus("Darwisy", randCase[randNum]);
-        System.out.println(cs3);
+    Customer(String name) {
+        this.name = name;
     }
 
-    Customer(String name){this.name = name;}
-
-
-    public void custMenuSelect(){
+    public void custMenuSelect() throws IOException {
         Scanner input = new Scanner(System.in);
         //Display customer menu
         System.out.println("+============================+");
@@ -37,6 +41,9 @@ public class Customer{
         System.out.println("+============================+");
 
         Customer cust = new Customer();
+        CheckInShop cIS = new CheckInShop();
+        custStatus state = new custStatus();
+
         System.out.println("Please enter your choice: ");
 
         int choice = input.nextInt();
@@ -44,12 +51,14 @@ public class Customer{
         switch (choice) {
             case 1:
                 System.out.println("Check-in shop");
+                cIS.checkIn();
                 break;
             case 2:
                 System.out.println("History of shops visited");
                 break;
             case 3:
                 System.out.println("Status");
+                state.displayStatus();
                 break;
             case 4:
                 System.out.println("Thank you for using this program..");
@@ -58,30 +67,42 @@ public class Customer{
                 System.out.println("Invalid selection");
                 cust.custMenuSelect();
                 break;
+        }
+
     }
 
+    class custStatus extends Customer {
+        public void displayStatus() throws IOException {
+            Scanner input = new Scanner(System.in);
+            Login state = new Login();
+
+            customerStuff custState = new customerStuff("CustomerFileAdmin");
+            String[][] readF = custState.getFileReading();
+
+            for (int i = 0; i < readF.length; i++) {
+                if (readF[i][0].equals(state.getLoginUserName())) {
+                    System.out.println("You are " + readF[i][2]);
+                }
+            }
+        }
+    }
 }
 
 
-class custStatus extends Customer{
-    private String status = "Normal";
-    custStatus(){}
-    custStatus(String status){this.status = status;}
-    custStatus(String name,String status){
-        super(name);
-        this.status = status;
-    }
-    void display() {
-        if (status.equals("COVID-19 Negative")){
-            System.out.println("Customer is a normal");
-        }
-        else if(status == ""){
-            System.out.println("Customer is a Close contact");
-        }
-    }
-    }
-}
 
 
-
-
+//    private String status = "Normal";
+//    custStatus(){}
+//    custStatus(String status){this.status = status;}
+//    custStatus(String name,String status){
+//        super(name);
+//        this.status = status;
+//    }
+//    void display() {
+//        if (status.equals("COVID-19 Negative")){
+//            System.out.println("Customer is a normal");
+//        }
+//        else if(status == ""){
+//            System.out.println("Customer is a Close contact");
+//        }
+//    }
