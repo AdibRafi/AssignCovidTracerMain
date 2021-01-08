@@ -55,8 +55,9 @@ public class Login extends Registration {
                     writer.close();
 
                     System.out.println("User successfully logined...");
+                    System.out.println("Press Enter To Continue...");
+                    input.nextLine();
                     custSelect.custMenuSelect();
-
                     loop++;
                 }
             }

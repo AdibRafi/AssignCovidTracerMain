@@ -67,9 +67,7 @@ class Registration{
 
 
         String[] reg = setArray(register);
-        customerStuff file = new customerStuff("registerStuff");
-//        file.fileWriting(reg);
-//        file.setInfoIntoAdminFile();
+        customerStuff file;
         
         file = new customerStuff("registerStuff");
         String[][] newArray = Arrays.copyOf(file.getFileReading(),
