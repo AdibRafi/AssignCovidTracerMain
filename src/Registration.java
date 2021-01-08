@@ -75,6 +75,9 @@ class Registration{
         file.fileWriting(newArray);
 
         System.out.println("Register done");
+        System.out.println("Press Enter to continue...");
+        input.nextLine();
+
         user.startSystem();
     }
 

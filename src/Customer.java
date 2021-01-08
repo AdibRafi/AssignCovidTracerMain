@@ -118,6 +118,10 @@ public class Customer {
                 System.out.println(String.format("%-5s %-15s %-15s %s",i+1,
                         listDate.get(i), listTime.get(i), listShop.get(i)));
             }
+            System.out.println("Press Enter to continue...");
+            input.nextLine();
+            Customer startOver = new Customer();
+            startOver.custMenuSelect();
         }
     }
 
