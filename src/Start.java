@@ -4,9 +4,7 @@ import java.util.Scanner;
 public class Start {
     public static void main(String[] args) throws IOException {
         Start s = new Start();
-        Login l = new Login();
         s.startSystem();
-
     }
     public void startSystem() throws IOException {
         Login x = new Login();

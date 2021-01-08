@@ -1,30 +1,15 @@
-2021-01-01,01:33:14,Imran,Harvey
-2021-01-02,01:34:42,Alex,UniQlo
-2021-01-02,01:41:18,Shuhail,Timberland
-2021-01-01,01:41:36,Muthu,UniQlo
-2021-01-01,01:48:58,Imran,Pizza Hut
-2021-01-02,02:06:40,Muthu,Parkson
-2021-01-01,03:01:33,Tham,McDonald
-2021-01-02,03:01:49,Adib,Swatch
-2021-01-01,03:09:54,Adib,Timberland
-2021-01-01,04:41:23,Khor,Domino
-2021-01-01,06:35:07,Imran,UniQlo
-2021-01-01,06:41:31,Arif,Swatch
-2021-01-02,06:56:02,Alex,Timberland
-2021-01-01,07:05:38,Tham,Swatch
-2021-01-01,07:26:56,Darwisy,Domino
-2021-01-01,07:41:39,Tham,Harvey
-2021-01-01,08:03:18,Imran,Timberland
-2021-01-01,08:45:03,Imran,Swatch
-2021-01-01,09:04:14,Tham,Swatch
-2021-01-02,09:05:17,Imran,Pizza Hut
-2021-01-02,09:10:28,Adib,McDonald
-2021-01-02,09:17:14,Adib,Harvey
-2021-01-02,10:29:18,Darwisy,K-Fry
-2021-01-02,11:31:08,Arif,Timberland
-2021-01-02,12:11:19,Tham,Swatch
-2021-01-02,12:11:40,Tham,Parkson
-2021-01-02,12:29:40,Muthu,Timberland
-2021-01-02,12:40:54,Alex,Domino
-2021-01-02,12:50:01,Darwisy,Harvey
-2021-01-01,12:59:41,Khor,McDonald
+CLOSE
+
+-go to MasterFileAdmin,
+-search for the same Date -> Shop -> !name(x nak Adib) : then put it inside possibleCase(take the time)
+-then calculate the time Diff so in this context 1 hour before n 1 hour after the possibleCase
+- make another arrayList<> closeName
+-
+-after u calculate, do the same scan of the file, but this time cari the same time inside the timediff.
+-if you find the .equal with the timeDiff, add it the name into closeName
+
+now go back to CustomerFileAdmin
+- Scan the file until .equal(closeName)
+- make sure the only put "CLOSE" when !"CASE"
+
+also make sure to rewrite the file

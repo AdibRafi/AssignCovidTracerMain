@@ -53,14 +53,8 @@ public class fileStuff {
 }
 
 class editStuff extends fileStuff{
-    private final String[] name = {
-            "Adib", "Ali", "Adam", "Darwisy",
-            "Harri", "Shuhail", "Raja", "Azri",
-            "Imran", "Elijah", "Ahmad"};
-    private final String[] shop = {
-            "Tesco", "McDonald", "Pizza Hut", "Domino",
-            "Parkson", "Harvey", "Jaya Grocer", "HomePro",
-            "Machine", "Samsung", "Swatch"};
+    private final String[] name = {"Adib", "Ali", "Darwisy","Raja","Ahmad"};
+    private final String[] shop = {"Tesco", "Parkson","Jaya Grocer","Kfry"};
     private final String[] status = {"Case","Close","Normal"};
     Random rand = new Random();
     Date now = new Date();
@@ -74,26 +68,47 @@ class editStuff extends fileStuff{
         super(filename);
     }
 
+    public String[] setName() throws IOException {
+        editStuff e = new editStuff("registerStuff");
+        String[][] input = e.getFileReading();
+
+        try{
+            ArrayList<String> newArray = new ArrayList<>();
+            for (int i = 0; i < input.length; i++) {
+                newArray.add(input[i][0]+input[i][1]);
+            }
+            newArray.addAll(Arrays.asList(this.name));
+            System.out.println(newArray);
+            return newArray.toArray(new String[0]);
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ArrayList<String> newArray = new ArrayList<>();
+            newArray.add(input[0][0]+input[0][1]);
+            newArray.addAll(Arrays.asList(this.name));
+            System.out.println(newArray);
+            return newArray.toArray(new String[0]);
+        }
+    }
     public void sortDate()throws IOException{
         fileStuff f = new fileStuff(super.toString());
         String[][] input = f.getFileReading();
         Comparator<String[]> date = Comparator.comparing(row -> row[0]);
         Comparator<String[]> time = Comparator.comparing(row -> row[1]);
         Arrays.sort(input,date.thenComparing(time));
-        System.out.println("dah");
         f.fileWriting(input);
 
     }
     public void randomGeneratorMaster() throws IOException {
-
+        editStuff e = new editStuff("MasterFileAdmin");
+        String[] randomData = e.setName();
         for (int i = 0; i < 30; i++) {
             long random = ThreadLocalRandom.current().nextLong(timeRangeMs);
             Date randDate = new Date(now.getTime() - random);
             String stringDate = DateFor.format(randDate);
             String stringTime = TimeFor.format(randDate);
             String[] arr = {stringDate,stringTime,
-                    name[rand.nextInt(10)],
-                    shop[rand.nextInt(10)]};
+                    randomData[rand.nextInt(randomData.length)],
+                    shop[rand.nextInt(shop.length)]};
             firstResult.add(arr);
         }
         String[][] finalResult = new String[firstResult.size()][];
@@ -103,96 +118,6 @@ class editStuff extends fileStuff{
 
         fileStuff f = new fileStuff(super.toString());
         f.fileWriting(finalResult);
-
-    }
-    public void randomGeneratorCustomer() throws IOException{
-        List<String[]> firstResult = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            int x = rand.nextInt(100000000);
-            String y = "01" + x;
-            String[] arr = {name[rand.nextInt(10)],y,
-            shop[rand.nextInt(10)]};
-            firstResult.add(arr);
-        }
-        String[][] finalResult = new String[firstResult.size()][];
-        for (int i = 0; i < finalResult.length; i++) {
-            finalResult[i] = firstResult.get(i);
-        }
-
-        fileStuff f = new fileStuff("CustomerFile");
-        f.fileWriting(finalResult);
-    }
-    public void randomGeneratorShop() throws IOException{
-        for (int i = 0; i < 30; i++) {
-            int x = rand.nextInt(100000000);
-            String y = "03" + x;
-            String[] arr = {shop[rand.nextInt(10)],
-                    y, name[rand.nextInt(10)],
-            status[rand.nextInt(3)]};
-            firstResult.add(arr);
-        }
-        String[][] finalResult = new String[firstResult.size()][];
-        for (int i = 0; i < finalResult.length; i++) {
-            finalResult[i] = firstResult.get(i);
-        }
-
-        fileStuff f = new fileStuff("ShopFile");
-        f.fileWriting(finalResult);
-    }
-    public void modifyFile(String filePath, String oldString, String newString)
-    {
-        File fileToBeModified = new File(filePath);
-
-        String oldContent = "";
-
-        BufferedReader reader = null;
-
-        FileWriter writer = null;
-
-        try
-        {
-            reader = new BufferedReader(new FileReader(fileToBeModified));
-
-            //Reading all the lines of input text file into oldContent
-
-            String line = reader.readLine();
-
-            while (line != null)
-            {
-                oldContent = oldContent + line + System.lineSeparator();
-
-                line = reader.readLine();
-            }
-
-            //Replacing oldString with newString in the oldContent
-
-            String newContent = oldContent.replaceAll(oldString, newString);
-
-            //Rewriting the input text file with newContent
-
-            writer = new FileWriter(fileToBeModified);
-
-            writer.write(newContent);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        finally
-        {
-            try
-            {
-                //Closing the resources
-
-                reader.close();
-
-                writer.close();
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-        }
 
     }
     public void changeStatus() throws IOException, ParseException {
@@ -203,9 +128,19 @@ class editStuff extends fileStuff{
         Scanner input = new Scanner(System.in);
         int userInput = input.nextInt();
 
+        //kena amik name from MasterFile then cari the name in CustomerFileAdmin
+
+        e = new editStuff("MasterFileAdmin");
+        readFile = e.getFileReading();
+        String nameFlag = readFile[userInput-1][2];
+
         e = new editStuff("CustomerFileAdmin");
         readFile = e.getFileReading();
-        readFile[userInput-1][2] = "Case";
+
+        for (int i = 0; i < readFile.length; i++) {
+            if (readFile[i][0].equals(nameFlag))
+                readFile[i][2] = "Case";
+        }
         e.fileWriting(readFile);
 
         f = new fileStuff("MasterFileAdmin");
@@ -221,11 +156,6 @@ class editStuff extends fileStuff{
         caseName.add(readFile[userInput-1][2]);
         caseShop.add(readFile[userInput-1][3]);
 
-        System.out.println(caseDate);
-        System.out.println(caseTime);
-        System.out.println(caseName);
-        System.out.println(caseShop);
-
         //change the shop status from caseShop array
         e = new editStuff("ShopFileAdmin");
         readFile = e.getFileReading();
@@ -235,7 +165,6 @@ class editStuff extends fileStuff{
                 readFile[i][3] = "Case";
         }
         e.fileWriting(readFile);
-
 
         //calculate siapa dpt close
 
@@ -252,7 +181,6 @@ class editStuff extends fileStuff{
                 }
             }
         }
-        System.out.println(possibleCase);
         ArrayList<String> closeName = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         Date possibleTimeFromCase = sdf.parse(caseTime.get(0));
@@ -261,7 +189,6 @@ class editStuff extends fileStuff{
             long timeDiff = possibleTime.getTime() - possibleTimeFromCase.getTime();
             long x = Math.abs(timeDiff);
             int hours = (int) (x/(1000*60*60)%24);
-            System.out.println(hours);
             if (hours ==0 || hours ==11){
                 for (int y = 0; y < readFile.length; y++) {
                     if (readFile[y][1].equals(possibleCase.get(i)))
@@ -269,7 +196,6 @@ class editStuff extends fileStuff{
                 }
             }
         }
-        System.out.println(closeName);
         e = new editStuff("CustomerFileAdmin");
         readFile = e.getFileReading();
         for (int i = 0; i < closeName.size(); i++) {

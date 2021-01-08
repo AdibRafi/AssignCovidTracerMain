@@ -62,9 +62,12 @@ class Registration{
         String phoneNo = input.nextLine();
         register.setPhoneNo(phoneNo);
 
+        System.out.println("Register done");
+        user.startSystem();
+
 
         String[] reg = setArray(register);
-        customerStuff file;
+        customerStuff file = new customerStuff("registerStuff");
 //        file.fileWriting(reg);
 //        file.setInfoIntoAdminFile();
         
