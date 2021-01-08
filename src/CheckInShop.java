@@ -66,7 +66,6 @@ public class CheckInShop {
                 System.out.println(Arrays.toString(result));
                 break;}
             case 5:{
-                System.out.println("backtocustselection");
                 backTo.custMenuSelect();
             }
 
@@ -77,7 +76,6 @@ public class CheckInShop {
             }
 
         }
-
 
 
 

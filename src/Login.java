@@ -1,5 +1,7 @@
 //login menu for customer to login into the system
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -46,12 +48,14 @@ public class Login extends Registration {
             for (int i = 0; i < inputFromFile.length; i++) {
                 if (userName.equals(inputFromFile[i][0] + inputFromFile[i][1])
                         && password.equals(inputFromFile[i][2])) {
+
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("loginStuff"));
+                    writer.write(userName);
+                    writer.flush();
+                    writer.close();
+
                     System.out.println("User successfully logined...");
                     custSelect.custMenuSelect();
-//                    setUserName(userName);
-//                    setPassword(password);
-//                    System.out.println(getLoginUserName());
-//                    System.out.println(getLoginPassword());
 
                     loop++;
                 }

@@ -1,7 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Customer {
@@ -42,7 +43,7 @@ public class Customer {
 
         Customer cust = new Customer();
         CheckInShop cIS = new CheckInShop();
-        custStatus state = new custStatus();
+        custOption state = new custOption();
 
         System.out.println("Please enter your choice: ");
 
@@ -52,40 +53,74 @@ public class Customer {
             case 1:
                 System.out.println("Check-in shop");
                 cIS.checkIn();
-                break;
+
             case 2:
                 System.out.println("History of shops visited");
-                break;
+                state.displayHistory();
+
             case 3:
                 System.out.println("Status");
                 state.displayStatus();
-                break;
+
             case 4:
                 System.out.println("Thank you for using this program..");
                 break;
             default:
                 System.out.println("Invalid selection");
                 cust.custMenuSelect();
-                break;
         }
 
     }
 
-    class custStatus extends Customer {
+    class custOption extends Customer {
         public void displayStatus() throws IOException {
-            Scanner input = new Scanner(System.in);
+            Scanner input = new Scanner(new File("loginStuff"));
+            String loginName = input.nextLine();
             Login state = new Login();
 
             customerStuff custState = new customerStuff("CustomerFileAdmin");
             String[][] readF = custState.getFileReading();
 
             for (int i = 0; i < readF.length; i++) {
-                if (readF[i][0].equals(state.getLoginUserName())) {
+                if (readF[i][0].equals(loginName)) {
                     System.out.println("You are " + readF[i][2]);
                 }
             }
+            System.out.println("Press Enter to continue...");
+            input.nextLine();
+            Customer startOver = new Customer();
+            startOver.custMenuSelect();
+
+        }
+        public void displayHistory() throws IOException {
+            // 2021-01-02,04:41:31,Darwisy,Harvey
+            Scanner input = new Scanner(new File("loginStuff"));
+            String loginName = input.nextLine();
+
+            customerStuff c = new customerStuff("MasterFile");
+            String[][] hist = c.getFileReading();
+
+            ArrayList<String> listDate = new ArrayList<>();
+            ArrayList<String> listTime = new ArrayList<>();
+            ArrayList<String> listShop = new ArrayList<>();
+
+
+            for (int i = 0; i < hist.length ; i++) {
+                if (hist[i][2].equals(loginName)){
+                    listDate.add(hist[i][0]);
+                    listTime.add(hist[i][1]);
+                    listShop.add(hist[i][3]);
+                }
+            }
+            System.out.println(String.format("%-5s %-15s %-15s %s","No",
+                    "Date", "Time", "Shop"));
+            for (int i = 0; i < listDate.size(); i++) {
+                System.out.println(String.format("%-5s %-15s %-15s %s",i+1,
+                        listDate.get(i), listTime.get(i), listShop.get(i)));
+            }
         }
     }
+
 }
 
 
