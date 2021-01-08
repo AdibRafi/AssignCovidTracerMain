@@ -14,7 +14,6 @@ public class testingGroundAdib {
         //pilih sapa dpt case
 
         customerStuff f = new customerStuff();
-        f.setInfoIntoAdminFile();
 //        Admin d = new Admin();
 //        fileStuff f;
 //        editStuff e;

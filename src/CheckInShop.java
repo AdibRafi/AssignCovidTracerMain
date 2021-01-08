@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -11,7 +12,9 @@ public class CheckInShop {
     }
     public void checkIn() throws IOException {
         CheckInShop cIS = new CheckInShop();
-
+        customerStuff c = new customerStuff("loginStuff");
+        Scanner input = new Scanner(new File("loginStuff"));
+        String loginName = input.nextLine();
         Date now = new Date();
         SimpleDateFormat DateFor = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat TimeFor = new SimpleDateFormat("HH:mm:ss");
@@ -41,29 +44,44 @@ public class CheckInShop {
 
         switch (userInput) {
             case 1:{
-                System.out.println("Tesco");
+                Scanner pressEnter = new Scanner(System.in);
                 result = new String[]{DateFor.format(now),
-                        TimeFor.format(now), name.getLoginUserName(), "Tesco"};
-                System.out.println(Arrays.toString(result));
+                        TimeFor.format(now), loginName, "Tesco"};
+                c.UpdateCheckInShop(result);
+                System.out.println("Check-In Successful");
+                System.out.println("Press Enter To continue");
+                pressEnter.nextLine();
+                backTo.custMenuSelect();
                 break;}
             case 2:{
-                System.out.println("Jaya Grocer");
+                Scanner pressEnter = new Scanner(System.in);
                 result = new String[]{DateFor.format(now),
-                        TimeFor.format(now), name.getLoginUserName(), "Jaya Grocer"};
-                System.out.println(Arrays.toString(result));
-
+                        TimeFor.format(now), loginName, "Jaya Grocer"};
+                c.UpdateCheckInShop(result);
+                System.out.println("Check-In Successful");
+                System.out.println("Press Enter To continue");
+                pressEnter.nextLine();
+                backTo.custMenuSelect();
                 break;}
             case 3:{
-                System.out.println("Kfry");
+                Scanner pressEnter = new Scanner(System.in);
                 result = new String[]{DateFor.format(now),
-                        TimeFor.format(now), name.getLoginUserName(), "Kfry"};
-                System.out.println(Arrays.toString(result));
+                        TimeFor.format(now), loginName, "Kfry"};
+                c.UpdateCheckInShop(result);
+                System.out.println("Check-In Successful");
+                System.out.println("Press Enter To continue");
+                pressEnter.nextLine();
+                backTo.custMenuSelect();
                 break;}
             case 4:{
-                System.out.println("Parkson");
+                Scanner pressEnter = new Scanner(System.in);
                 result = new String[]{DateFor.format(now),
-                        TimeFor.format(now), name.getLoginUserName(), "Parkson"};
-                System.out.println(Arrays.toString(result));
+                        TimeFor.format(now), loginName, "Parkson"};
+                c.UpdateCheckInShop(result);
+                System.out.println("Check-In Successful");
+                System.out.println("Press Enter To continue");
+                pressEnter.nextLine();
+                backTo.custMenuSelect();
                 break;}
             case 5:{
                 backTo.custMenuSelect();

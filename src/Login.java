@@ -68,9 +68,14 @@ public class Login extends Registration {
             if (userName.equals(inputFromFile[0][0] + inputFromFile[0][1])
                     && password.equals(inputFromFile[0][2])) {
                 System.out.println("User successfully logined...");
+                BufferedWriter writer = new BufferedWriter(new FileWriter("loginStuff"));
+                writer.write(userName);
+                writer.flush();
+                writer.close();
+                System.out.println("Press Enter to Continue...");
+                input.nextLine();
                 custSelect.custMenuSelect();
-                setUserName(userName);
-                setPassword(password);
+
             }
             else{
                 System.out.println("Invalid UserName or Password");

@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -55,7 +56,6 @@ public class fileStuff {
 class editStuff extends fileStuff{
     private final String[] name = {"Adib", "Ali", "Darwisy","Raja","Ahmad"};
     private final String[] shop = {"Tesco", "Parkson","Jaya Grocer","Kfry"};
-    private final String[] status = {"Case","Close","Normal"};
     Random rand = new Random();
     Date now = new Date();
     long timeRangeMs = 1000 * 60 * 60 * 24;
@@ -90,7 +90,7 @@ class editStuff extends fileStuff{
         }
     }
     public void sortDate()throws IOException{
-        fileStuff f = new fileStuff(super.toString());
+        fileStuff f = new fileStuff("MasterFileAdmin");
         String[][] input = f.getFileReading();
         Comparator<String[]> date = Comparator.comparing(row -> row[0]);
         Comparator<String[]> time = Comparator.comparing(row -> row[1]);
@@ -189,7 +189,7 @@ class editStuff extends fileStuff{
             long timeDiff = possibleTime.getTime() - possibleTimeFromCase.getTime();
             long x = Math.abs(timeDiff);
             int hours = (int) (x/(1000*60*60)%24);
-            if (hours ==0 || hours ==11){
+            if (hours ==0 || hours ==23){
                 for (int y = 0; y < readFile.length; y++) {
                     if (readFile[y][1].equals(possibleCase.get(i)))
                         closeName.add(readFile[y][2]);
@@ -215,17 +215,46 @@ class customerStuff extends fileStuff{
     customerStuff(String fileName){super(fileName);}
     public void setInfoIntoAdminFile() throws IOException {
         fileStuff f = new fileStuff("registerStuff");
-        String[] inputFromRegister = f.getFileReading1row();
+        String[][] inputFromRegister = f.getFileReading();
         // CustomerFileAdmin
-        String[] arrayToAdd = {inputFromRegister[0]+inputFromRegister[1],
-        inputFromRegister[3],"Normal"};
+        f = new fileStuff("CustomerFileAdminInitial");
+        String[][] oldArr = f.getFileReading();
+        ArrayList<String[]> arrToAdd = new ArrayList<>();
+        for (int i = 0; i < oldArr.length; i++) {
+            String[] add = {oldArr[i][0],oldArr[i][1],oldArr[i][2]};
+            arrToAdd.add(add);
+        }
+        
+        for (int i = 0; i < inputFromRegister.length; i++) {
+            String[] add = {inputFromRegister[i][0]+inputFromRegister[i][1],
+                    inputFromRegister[i][3],"Normal"};
+            arrToAdd.add(add);
+        }
 
-        f = new fileStuff("CustomerFileAdmin");
-        String[][] newArray = Arrays.copyOf(f.getFileReading(),
-                f.getFileReading().length+1);
-        newArray[f.getFileReading().length] = arrayToAdd;
-        f.fileWriting(newArray);
-
+        String[][] result = new String[arrToAdd.size()][];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = arrToAdd.get(i);
+        }
+        f=new fileStuff("CustomerFileAdmin");
+        f.fileWriting(result);
+    }
+    public void UpdateCheckInShop(String[] arr) throws IOException {
+        customerStuff c = new customerStuff("MasterFileAdmin");
+        String[][] readFile = c.getFileReading();
+        ArrayList<String[]> arrToAdd = new ArrayList<>();
+        for (int i = 0; i < readFile.length; i++) {
+            String[] add = {readFile[i][0],readFile[i][1]
+                    ,readFile[i][2],readFile[i][3]};
+            arrToAdd.add(add);
+        }
+        arrToAdd.add(arr);
+        String[][] result = new String[arrToAdd.size()][];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = arrToAdd.get(i);
+        }
+        c.fileWriting(result);
+        editStuff e = new editStuff();
+        e.sortDate();
     }
 
 }

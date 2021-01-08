@@ -30,7 +30,10 @@ public class adminTest{
             case "1" -> y.displayCustomer();
             case "2" -> y.displayShops();
             case "3" -> y.displayMaster();
-            case "4" -> {} // break
+            case "4" -> {
+                System.out.println("Thank you For using our program.");
+                System.exit(0);
+            } // break
             case "random" -> {
                 e.randomGeneratorMaster();
                 e.sortDate();

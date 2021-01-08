@@ -62,18 +62,22 @@ class Registration{
         String phoneNo = input.nextLine();
         register.setPhoneNo(phoneNo);
 
-        System.out.println("Register done");
-        user.startSystem();
-
-
         String[] reg = setArray(register);
         customerStuff file;
         
         file = new customerStuff("registerStuff");
-        String[][] newArray = Arrays.copyOf(file.getFileReading(),
+        int test = file.getFileReading().length;
+        System.out.println(test);
+        if (test ==0){
+            file.fileWriting(reg);
+        }
+        else{
+            String[][] newArray = Arrays.copyOf(file.getFileReading(),
                 file.getFileReading().length+1);
-        newArray[file.getFileReading().length] = reg;
-        file.fileWriting(newArray);
+            newArray[file.getFileReading().length] = reg;
+            file.fileWriting(newArray);
+        }
+        file.setInfoIntoAdminFile();
 
         System.out.println("Register done");
         System.out.println("Press Enter to continue...");

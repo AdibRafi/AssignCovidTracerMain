@@ -6,6 +6,10 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Customer {
+    public static void main(String[] args) throws IOException {
+        Customer c = new Customer();
+        c.custMenuSelect();
+    }
     private String name;
 
     Customer() {
@@ -55,7 +59,6 @@ public class Customer {
                 cIS.checkIn();
 
             case 2:
-                System.out.println("History of shops visited");
                 state.displayHistory();
 
             case 3:
@@ -64,6 +67,7 @@ public class Customer {
 
             case 4:
                 System.out.println("Thank you for using this program..");
+                System.exit(0);
                 break;
             default:
                 System.out.println("Invalid selection");
@@ -75,6 +79,7 @@ public class Customer {
     class custOption extends Customer {
         public void displayStatus() throws IOException {
             Scanner input = new Scanner(new File("loginStuff"));
+            Scanner pressEnter = new Scanner(System.in);
             String loginName = input.nextLine();
             Login state = new Login();
 
@@ -87,41 +92,64 @@ public class Customer {
                 }
             }
             System.out.println("Press Enter to continue...");
-            input.nextLine();
+            pressEnter.nextLine();
             Customer startOver = new Customer();
             startOver.custMenuSelect();
 
         }
         public void displayHistory() throws IOException {
             // 2021-01-02,04:41:31,Darwisy,Harvey
-            Scanner input = new Scanner(new File("loginStuff"));
-            String loginName = input.nextLine();
+            try {
+                Scanner input = new Scanner(new File("loginStuff"));
+                Scanner pressEnter = new Scanner(System.in);
+                String loginName = input.nextLine();
 
-            customerStuff c = new customerStuff("MasterFile");
-            String[][] hist = c.getFileReading();
+                customerStuff c = new customerStuff("MasterFileAdmin");
+                String[][] hist = c.getFileReading();
 
-            ArrayList<String> listDate = new ArrayList<>();
-            ArrayList<String> listTime = new ArrayList<>();
-            ArrayList<String> listShop = new ArrayList<>();
+                ArrayList<String> listDate = new ArrayList<>();
+                ArrayList<String> listTime = new ArrayList<>();
+                ArrayList<String> listShop = new ArrayList<>();
 
+                boolean gotHistory = false;
 
-            for (int i = 0; i < hist.length ; i++) {
-                if (hist[i][2].equals(loginName)){
-                    listDate.add(hist[i][0]);
-                    listTime.add(hist[i][1]);
-                    listShop.add(hist[i][3]);
+                for (int i = 0; i < hist.length; i++) {
+                    if (hist[i][2].equals(loginName)) {
+                        listDate.add(hist[i][0]);
+                        listTime.add(hist[i][1]);
+                        listShop.add(hist[i][3]);
+                        gotHistory = true;
+                    }
+                }
+                if (gotHistory) {
+                    System.out.println("History of Shop visited");
+                    System.out.println(String.format("%-5s %-15s %-15s %s", "No",
+                            "Date", "Time", "Shop"));
+                    for (int i = 0; i < listDate.size(); i++) {
+                        System.out.println(String.format("%-5s %-15s %-15s %s", i + 1,
+                                listDate.get(i), listTime.get(i), listShop.get(i)));
+                    }
+                    System.out.println("Press Enter to continue...");
+                    pressEnter.nextLine();
+                    Customer startOver = new Customer();
+                    startOver.custMenuSelect();
+                }
+                else{
+                    System.out.println("You have no History");
+                    System.out.println("Press Enter To Continue");
+                    pressEnter.nextLine();
+                    Customer startOver = new Customer();
+                    startOver.custMenuSelect();
                 }
             }
-            System.out.println(String.format("%-5s %-15s %-15s %s","No",
-                    "Date", "Time", "Shop"));
-            for (int i = 0; i < listDate.size(); i++) {
-                System.out.println(String.format("%-5s %-15s %-15s %s",i+1,
-                        listDate.get(i), listTime.get(i), listShop.get(i)));
+            catch (ArrayIndexOutOfBoundsException ex){
+                Scanner pressEnter = new Scanner(System.in);
+                System.out.println("You have no History");
+                System.out.println("Press Enter To Continue");
+                pressEnter.nextLine();
+                Customer startOver = new Customer();
+                startOver.custMenuSelect();
             }
-            System.out.println("Press Enter to continue...");
-            input.nextLine();
-            Customer startOver = new Customer();
-            startOver.custMenuSelect();
         }
     }
 
