@@ -5,6 +5,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * class of login to get the username and password from a file(registerStuff)
+ * @class Login
+ * @extends Registration
+ * @throws IOException
+ * @param- nothing
+ * @return userName,password
+ */
 public class Login extends Registration {
     private String loginUserName;
     private String loginPassword;
@@ -29,6 +37,14 @@ public class Login extends Registration {
     public String getLoginPassword() {
         return loginPassword;
     }
+
+    /**
+     * the login prompt for user to log in to the system
+     * @method startLogin()
+     * @throws IOException
+     * @params nothing
+     * @return nothing
+     */
 
     public void startLogin() throws IOException {
         Scanner input = new Scanner(System.in);
@@ -85,14 +101,6 @@ public class Login extends Registration {
                 System.out.println("Invalid UserName or Password");
             }
         }
-
-
-//        if(userName.equals(info.getUserName()) && password.equals(info.getPassword())){
-//            System.out.println("User successfully logined...");
-//            custSelect.custMenuSelect();
-//        }else{
-//            System.out.println("Invalid username or password.");
-//        }
 
     }
 

@@ -1,8 +1,17 @@
-//Registration for customer to register into the system
 
 import java.io.IOException;
 import java.util.*;
 
+//Registration for customer to register into the system
+
+/**
+ * the class is to get the first name, last name, password and phone Number
+ * then set the first name and last name as username and set the password
+ * @class Registration
+ * @method startRegister()
+ * @params nothing
+ * @returns firstName, lastName, password
+ */
 class Registration{
     private String firstName;
     private String lastName;
@@ -36,6 +45,16 @@ class Registration{
     public void setPhoneNo(String phoneNo){
         this.phoneNo = phoneNo;
     }
+
+    /**
+     * display register prompt for user to register into the system
+     * then save the info into a file
+     * @method startRegister()
+     * @throws IOException
+     * @params nothing
+     * @returns nothing
+     *
+     */
 
     public void startRegister() throws IOException {
         Registration register = new Registration();

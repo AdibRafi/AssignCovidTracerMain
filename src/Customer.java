@@ -5,32 +5,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * This class is for user as a customer to check-in into a shop, view history shop visited, and view status
+ * @class Customer
+ * @method custMenuSelect()
+ * @params nothing
+ *
+ * @author Darwisy
+ */
 public class Customer {
     public static void main(String[] args) throws IOException {
         Customer c = new Customer();
         c.custMenuSelect();
     }
-    private String name;
-
     Customer() {
     }
-//    public void custStatus(){
-//        Customer cs = new custStatus();
-//
-//        Customer cs2 = new custStatus("Adib", "case");
-//        ((custStatus) cs).display();
-//
-//        Random rand = new Random();
-//        String[] randCase = {"COVID-19 Positive", "COVID-19 Negative"};
-//        int randNum = rand.nextInt(2);
-//        Customer cs3 = new custStatus("Darwisy", randCase[randNum]);
-//        System.out.println(cs3);
-//    }
 
-    Customer(String name) {
-        this.name = name;
-    }
-
+    /**
+     * this function is to display the Customer's selection prompt
+     * @throws IOException
+     * @params nothing
+     * @return nothing
+     */
     public void custMenuSelect() throws IOException {
         Scanner input = new Scanner(System.in);
         //Display customer menu
@@ -76,7 +72,23 @@ public class Customer {
 
     }
 
+    /**
+     * this class contain both displayStatus and displayHistory method
+     * we inherit the Customer to get the customer's input choice
+     * @class  custOption
+     * @extends Customer
+     * @return nothing
+     */
+
     class custOption extends Customer {
+
+        /**
+         * to display current status of the user(customer)
+         * @method displayStatus()
+         * @throws IOException
+         * @params nothing
+         * @return nothing
+         */
         public void displayStatus() throws IOException {
             Scanner input = new Scanner(new File("loginStuff"));
             Scanner pressEnter = new Scanner(System.in);
@@ -97,8 +109,15 @@ public class Customer {
             startOver.custMenuSelect();
 
         }
+
+        /**
+         * to display the history of user(customer) shop visited
+         * @method displayHistory()
+         * @throws IOException
+         * @params nothing
+         * @return nothing
+         */
         public void displayHistory() throws IOException {
-            // 2021-01-02,04:41:31,Darwisy,Harvey
             try {
                 Scanner input = new Scanner(new File("loginStuff"));
                 Scanner pressEnter = new Scanner(System.in);
@@ -154,22 +173,3 @@ public class Customer {
     }
 
 }
-
-
-
-
-//    private String status = "Normal";
-//    custStatus(){}
-//    custStatus(String status){this.status = status;}
-//    custStatus(String name,String status){
-//        super(name);
-//        this.status = status;
-//    }
-//    void display() {
-//        if (status.equals("COVID-19 Negative")){
-//            System.out.println("Customer is a normal");
-//        }
-//        else if(status == ""){
-//            System.out.println("Customer is a Close contact");
-//        }
-//    }

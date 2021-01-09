@@ -5,11 +5,26 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * this class is for customer to check-in into a shop.
+ * @class CheckInShop()
+ * @method checkIn()
+ * @params nothing
+ * @returns nothing
+ */
 public class CheckInShop {
     public static void main(String[] args) throws IOException {
         CheckInShop test= new CheckInShop();
         test.checkIn();
     }
+
+    /**
+     * displaying the check in shop prompt and get the user input
+     * @method checkIn()
+     * @throws IOException
+     * @params nothing
+     * @return nothing
+     */
     public void checkIn() throws IOException {
         CheckInShop cIS = new CheckInShop();
         customerStuff c = new customerStuff("loginStuff");
@@ -19,12 +34,12 @@ public class CheckInShop {
         SimpleDateFormat DateFor = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat TimeFor = new SimpleDateFormat("HH:mm:ss");
 
-        // 2021-01-01,06:42:19,Darwisy,Kfry
-
         Login name = new Login();
 
         String[] result;
         Customer backTo = new Customer();
+
+        //Check-in prompt
 
         System.out.println("+==================================+");
         System.out.println("|      CHECK-IN SHOP SELECTION     |");
@@ -94,14 +109,6 @@ public class CheckInShop {
             }
 
         }
-
-
-
-//            if(userInput.equals("now")){
-//                String[] result = {DateFor.format(now), TimeFor.format(now)};
-//                System.out.println(Arrays.toString(result));
-//            }
-
 }
 
 

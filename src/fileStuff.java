@@ -128,7 +128,7 @@ class editStuff extends fileStuff{
         Scanner input = new Scanner(System.in);
         int userInput = input.nextInt();
 
-        //kena amik name from MasterFile then cari the name in CustomerFileAdmin
+        //must take name from MasterFile then cari the name in CustomerFileAdmin
 
         e = new editStuff("MasterFileAdmin");
         readFile = e.getFileReading();
@@ -166,7 +166,7 @@ class editStuff extends fileStuff{
         }
         e.fileWriting(readFile);
 
-        //calculate siapa dpt close
+        //calculate person to get close status
 
         f = new fileStuff("MasterFileAdmin");
         readFile = f.getFileReading();
@@ -259,16 +259,3 @@ class customerStuff extends fileStuff{
 
 }
 
-
-// ARCHIVE
-// Scanner readFile;
-//    public List<String> readingFile(String fileName) throws IOException{
-//        File file = new File(fileName);
-//        readFile = new Scanner(file);
-//        List<String> result = new ArrayList<String>();
-//        while(readFile.hasNextLine()){
-//            String data = readFile.nextLine();
-//            result.add(data);
-//        }
-//        return result;
-//    }

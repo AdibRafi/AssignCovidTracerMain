@@ -2,11 +2,28 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
 
+
+/**
+ * adib terangkn...
+ * @class adminTest()
+ * @method adminStart()
+ * @params nothing
+ * @return nothing
+ */
 public class adminTest{
     public static void main(String[] args) throws IOException, ParseException {
         adminTest a = new adminTest();
         a.adminStart();
     }
+
+    /**
+     * display the admin selection prompt to get the admin input
+     * @method adminStart()
+     * @throws IOException
+     * @throws ParseException
+     * @params nothing
+     * @return nothing
+     */
     public void adminStart() throws IOException, ParseException {
         editStuff e = new editStuff("MasterFileAdmin");
         System.out.println("+=============================+");

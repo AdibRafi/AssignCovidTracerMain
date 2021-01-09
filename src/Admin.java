@@ -4,8 +4,25 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * adib terangkn...
+ * @class Admin()
+ * @method displayShops(), displayCustomer() and displayMaster()
+ * @params nothing
+ * @return nothing
+ */
 public class Admin {
     Admin(){}
+
+    /**
+     *
+     * @method displayCustomer()
+     * @throws IOException
+     * @throws ParseException
+     * @throws ArrayIndexOutOfBoundsException
+     * @params nothing
+     * @return nothing
+     */
     public void displayCustomer() throws IOException, ParseException,ArrayIndexOutOfBoundsException {
         fileStuff f = new fileStuff("CustomerFileAdmin");
         String[][] fileRead = f.getFileReading();
@@ -21,6 +38,14 @@ public class Admin {
         startOver.adminStart();
 
     }
+    /**
+     * adib terangkn...
+     * @method displayShops()
+     * @throws IOException
+     * @throws ParseException
+     * @params nothing
+     * @return nothing
+     */
     public void displayShops() throws IOException, ParseException {
         fileStuff f = new fileStuff("ShopFileAdmin");
         String[][] fileRead = f.getFileReading();
@@ -36,6 +61,14 @@ public class Admin {
         String userInput = input.nextLine();
         startOver.adminStart();
     }
+    /**
+     * adib terangkn...
+     * @method displayMaster()
+     * @throws IOException
+     * @throws ParseException
+     * @params nothing
+     * @return nothing
+     */
     public void displayMaster() throws IOException, ParseException {
         fileStuff f = new fileStuff("MasterFileAdmin");
         String[][] fileRead = f.getFileReading();
