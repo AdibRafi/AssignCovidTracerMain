@@ -12,6 +12,8 @@ import java.util.Scanner;
  * @throws IOException
  * @param- nothing
  * @return userName,password
+ *
+ * @author Darwisy
  */
 public class Login extends Registration {
     private String loginUserName;
@@ -44,6 +46,8 @@ public class Login extends Registration {
      * @throws IOException
      * @params nothing
      * @return nothing
+     *
+     * @author Darwisy
      */
 
     public void startLogin() throws IOException {

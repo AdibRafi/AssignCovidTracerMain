@@ -26,6 +26,8 @@ public class Customer {
      * @throws IOException
      * @params nothing
      * @return nothing
+     *
+     * @author Darwisy
      */
     public void custMenuSelect() throws IOException {
         Scanner input = new Scanner(System.in);
@@ -78,6 +80,8 @@ public class Customer {
      * @class  custOption
      * @extends Customer
      * @return nothing
+     *
+     * @author Darwisy
      */
 
     class custOption extends Customer {
@@ -88,6 +92,8 @@ public class Customer {
          * @throws IOException
          * @params nothing
          * @return nothing
+         *
+         * @author Darwisy
          */
         public void displayStatus() throws IOException {
             Scanner input = new Scanner(new File("loginStuff"));
@@ -116,6 +122,8 @@ public class Customer {
          * @throws IOException
          * @params nothing
          * @return nothing
+         *
+         * @author Darwisy
          */
         public void displayHistory() throws IOException {
             try {

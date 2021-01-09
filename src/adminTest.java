@@ -23,6 +23,8 @@ public class adminTest{
      * @throws ParseException
      * @params nothing
      * @return nothing
+     *
+     * @author Adib
      */
     public void adminStart() throws IOException, ParseException {
         editStuff e = new editStuff("MasterFileAdmin");

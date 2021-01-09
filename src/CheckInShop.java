@@ -11,6 +11,8 @@ import java.util.Scanner;
  * @method checkIn()
  * @params nothing
  * @returns nothing
+ *
+ * @author Darwisy
  */
 public class CheckInShop {
     public static void main(String[] args) throws IOException {
@@ -24,6 +26,8 @@ public class CheckInShop {
      * @throws IOException
      * @params nothing
      * @return nothing
+     *
+     * @author Darwisy
      */
     public void checkIn() throws IOException {
         CheckInShop cIS = new CheckInShop();

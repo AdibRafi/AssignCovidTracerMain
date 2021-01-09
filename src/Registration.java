@@ -11,6 +11,8 @@ import java.util.*;
  * @method startRegister()
  * @params nothing
  * @returns firstName, lastName, password
+ *
+ * @author Darwisy
  */
 class Registration{
     private String firstName;
@@ -54,6 +56,7 @@ class Registration{
      * @params nothing
      * @returns nothing
      *
+     * @author Darwisy
      */
 
     public void startRegister() throws IOException {

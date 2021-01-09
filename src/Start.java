@@ -7,6 +7,8 @@ import java.util.Scanner;
  * @method startSystem()
  * @params nothing
  * @return nothing
+ *
+ * @author Darwisy
  */
 public class Start {
     public static void main(String[] args) throws IOException {
@@ -21,6 +23,8 @@ public class Start {
      * @throws IOException
      * @params nothing
      * @return startLogin() or startRegister()
+     *
+     * @author Darwisy
      */
     public void startSystem() throws IOException {
         Login x = new Login();

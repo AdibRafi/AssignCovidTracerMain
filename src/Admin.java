@@ -22,6 +22,8 @@ public class Admin {
      * @throws ArrayIndexOutOfBoundsException
      * @params nothing
      * @return nothing
+     *
+     * @author Adib
      */
     public void displayCustomer() throws IOException, ParseException,ArrayIndexOutOfBoundsException {
         fileStuff f = new fileStuff("CustomerFileAdmin");
@@ -45,6 +47,8 @@ public class Admin {
      * @throws ParseException
      * @params nothing
      * @return nothing
+     *
+     * @author Adib
      */
     public void displayShops() throws IOException, ParseException {
         fileStuff f = new fileStuff("ShopFileAdmin");
@@ -68,6 +72,8 @@ public class Admin {
      * @throws ParseException
      * @params nothing
      * @return nothing
+     *
+     * @author Adib
      */
     public void displayMaster() throws IOException, ParseException {
         fileStuff f = new fileStuff("MasterFileAdmin");

@@ -5,6 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * @class fileStuff
+ * @method fileWriting(),..
+ *
+ *
+ * @author Adib
+ */
 public class fileStuff {
     private String fileName;
     fileStuff(){}
