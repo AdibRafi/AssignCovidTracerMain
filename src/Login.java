@@ -61,8 +61,12 @@ public class Login extends Registration {
                     loop++;
                 }
             }
-            if (loop == 0)
+            if (loop == 0){
                 System.out.println("Invalid username or password.");
+                Login l = new Login();
+                l.startLogin();
+            }
+
         }
         catch (ArrayIndexOutOfBoundsException ex){
             if (userName.equals(inputFromFile[0][0] + inputFromFile[0][1])
