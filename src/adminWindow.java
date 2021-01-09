@@ -4,27 +4,19 @@ import java.util.Scanner;
 
 
 /**
- * adib terangkn...
- * @class adminTest()
- * @method adminStart()
- * @params nothing
- * @return nothing
+ * This class is for running an Admin Window
+ * @author Adib
  */
-public class adminTest{
+public class adminWindow {
     public static void main(String[] args) throws IOException, ParseException {
-        adminTest a = new adminTest();
+        adminWindow a = new adminWindow();
         a.adminStart();
     }
 
     /**
-     * display the admin selection prompt to get the admin input
-     * @method adminStart()
-     * @throws IOException
-     * @throws ParseException
-     * @params nothing
-     * @return nothing
-     *
-     * @author Adib
+     * Starting an Admin Window
+     * @throws IOException If file not found
+     * @throws ParseException If String cannot be convert into Date
      */
     public void adminStart() throws IOException, ParseException {
         editStuff e = new editStuff("MasterFileAdmin");
@@ -40,7 +32,7 @@ public class adminTest{
 
         System.out.print("Press the number = ");
 
-        adminTest adminSelect = new adminTest();
+        adminWindow adminSelect = new adminWindow();
         Scanner input = new Scanner(System.in);
         String userInput = input.nextLine();
 

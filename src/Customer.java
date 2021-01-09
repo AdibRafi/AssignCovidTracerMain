@@ -7,27 +7,14 @@ import java.util.Scanner;
 
 /**
  * This class is for user as a customer to check-in into a shop, view history shop visited, and view status
- * @class Customer
- * @method custMenuSelect()
- * @params nothing
- *
  * @author Darwisy
  */
 public class Customer {
-    public static void main(String[] args) throws IOException {
-        Customer c = new Customer();
-        c.custMenuSelect();
-    }
-    Customer() {
-    }
+    Customer() { }
 
     /**
-     * this function is to display the Customer's selection prompt
-     * @throws IOException
-     * @params nothing
-     * @return nothing
-     *
-     * @author Darwisy
+     * This function is to display the Customer's selection prompt
+     * @throws IOException If file not found
      */
     public void custMenuSelect() throws IOException {
         Scanner input = new Scanner(System.in);
@@ -75,25 +62,15 @@ public class Customer {
     }
 
     /**
-     * this class contain both displayStatus and displayHistory method
+     * This class contain both displayStatus and displayHistory method
      * we inherit the Customer to get the customer's input choice
-     * @class  custOption
-     * @extends Customer
-     * @return nothing
-     *
      * @author Darwisy
      */
-
     class custOption extends Customer {
 
         /**
-         * to display current status of the user(customer)
-         * @method displayStatus()
-         * @throws IOException
-         * @params nothing
-         * @return nothing
-         *
-         * @author Darwisy
+         * To display current status of the user(customer)
+         * @throws IOException If file not found
          */
         public void displayStatus() throws IOException {
             Scanner input = new Scanner(new File("loginStuff"));
@@ -117,13 +94,8 @@ public class Customer {
         }
 
         /**
-         * to display the history of user(customer) shop visited
-         * @method displayHistory()
-         * @throws IOException
-         * @params nothing
-         * @return nothing
-         *
-         * @author Darwisy
+         * To display the history of user(customer) shop visited
+         * @throws IOException If file not found
          */
         public void displayHistory() throws IOException {
             try {
@@ -179,5 +151,4 @@ public class Customer {
             }
         }
     }
-
 }

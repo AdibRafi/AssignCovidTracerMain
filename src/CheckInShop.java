@@ -6,28 +6,13 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- * this class is for customer to check-in into a shop.
- * @class CheckInShop()
- * @method checkIn()
- * @params nothing
- * @returns nothing
- *
+ * This class is for customer to check-in into a shop.
  * @author Darwisy
  */
 public class CheckInShop {
-    public static void main(String[] args) throws IOException {
-        CheckInShop test= new CheckInShop();
-        test.checkIn();
-    }
-
     /**
-     * displaying the check in shop prompt and get the user input
-     * @method checkIn()
-     * @throws IOException
-     * @params nothing
-     * @return nothing
-     *
-     * @author Darwisy
+     * Displaying the check in shop prompt and get the user input
+     * @throws IOException If file not found
      */
     public void checkIn() throws IOException {
         CheckInShop cIS = new CheckInShop();

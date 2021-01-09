@@ -1,29 +1,19 @@
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * adib terangkn...
- * @class Admin()
- * @method displayShops(), displayCustomer() and displayMaster()
- * @params nothing
- * @return nothing
+ * This class is mainly use for Admin side of the project
+ * @author Adib
  */
 public class Admin {
     Admin(){}
 
     /**
-     *
-     * @method displayCustomer()
-     * @throws IOException
-     * @throws ParseException
-     * @throws ArrayIndexOutOfBoundsException
-     * @params nothing
-     * @return nothing
-     *
-     * @author Adib
+     * Displaying a Customer Info
+     * @throws IOException If file not found
+     * @throws ParseException If String cannot be convert into Date
+     * @throws ArrayIndexOutOfBoundsException If Array are out of index
      */
     public void displayCustomer() throws IOException, ParseException,ArrayIndexOutOfBoundsException {
         fileStuff f = new fileStuff("CustomerFileAdmin");
@@ -35,20 +25,16 @@ public class Admin {
 
         System.out.println("Press Enter to return to menu.");
         Scanner input = new Scanner(System.in);
-        adminTest startOver = new adminTest();
+        adminWindow startOver = new adminWindow();
         String userInput = input.nextLine();
         startOver.adminStart();
 
     }
+
     /**
-     * adib terangkn...
-     * @method displayShops()
-     * @throws IOException
-     * @throws ParseException
-     * @params nothing
-     * @return nothing
-     *
-     * @author Adib
+     * Displaying a Shop Info
+     * @throws IOException If file Not found
+     * @throws ParseException If String cannot be convert into Date
      */
     public void displayShops() throws IOException, ParseException {
         fileStuff f = new fileStuff("ShopFileAdmin");
@@ -61,19 +47,15 @@ public class Admin {
         }
         System.out.println("Press Enter to return to menu.");
         Scanner input = new Scanner(System.in);
-        adminTest startOver = new adminTest();
+        adminWindow startOver = new adminWindow();
         String userInput = input.nextLine();
         startOver.adminStart();
     }
+
     /**
-     * adib terangkn...
-     * @method displayMaster()
-     * @throws IOException
-     * @throws ParseException
-     * @params nothing
-     * @return nothing
-     *
-     * @author Adib
+     * Displaying a Master Info
+     * @throws IOException If file not found
+     * @throws ParseException If String cannot be convert into Date
      */
     public void displayMaster() throws IOException, ParseException {
         fileStuff f = new fileStuff("MasterFileAdmin");
@@ -87,7 +69,7 @@ public class Admin {
         }
         System.out.println("Would you like to Flag a customer? (y/n) ");
         String userInput = input.nextLine();
-        adminTest startOver = new adminTest();
+        adminWindow startOver = new adminWindow();
         if (userInput.equals("y")){
             editStuff e = new editStuff();
             e.changeStatus();
@@ -98,5 +80,3 @@ public class Admin {
         startOver.adminStart();
     }
 }
-
-

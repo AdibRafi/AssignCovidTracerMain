@@ -6,50 +6,27 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * class of login to get the username and password from a file(registerStuff)
- * @class Login
- * @extends Registration
- * @throws IOException
- * @param- nothing
- * @return userName,password
- *
+ * This class of login to get the username and password from a file(registerStuff)
  * @author Darwisy
  */
 public class Login extends Registration {
-    private String loginUserName;
     private String loginPassword;
-    public static void main(String[] args) throws IOException {
-        Login l = new Login();
-        l.startLogin();
-    }
 
-    public Login() throws IOException {}
+    public Login(){}
 
-    public void setUserName(String userName) {
-        this.loginUserName = userName;
-    }
+    /**
+     * Set password
+     * @param password password from login
+     */
     public void setPassword(String password) {
         this.loginPassword = password;
     }
 
-    public String getLoginUserName() {
-        return loginUserName;
-    }
-
-    public String getLoginPassword() {
-        return loginPassword;
-    }
 
     /**
-     * the login prompt for user to log in to the system
-     * @method startLogin()
-     * @throws IOException
-     * @params nothing
-     * @return nothing
-     *
-     * @author Darwisy
+     * The login prompt for user to log in to the system
+     * @throws IOException If file not found
      */
-
     public void startLogin() throws IOException {
         Scanner input = new Scanner(System.in);
         Customer custSelect = new Customer();

@@ -5,13 +5,8 @@ import java.util.*;
 //Registration for customer to register into the system
 
 /**
- * the class is to get the first name, last name, password and phone Number
+ * The class is to get the first name, last name, password and phone Number
  * then set the first name and last name as username and set the password
- * @class Registration
- * @method startRegister()
- * @params nothing
- * @returns firstName, lastName, password
- *
  * @author Darwisy
  */
 class Registration{
@@ -20,45 +15,75 @@ class Registration{
     private String password;
     private String phoneNo;
 
+    /**
+     * getting firstName
+     * @return firstName
+     */
     public String getFirstName(){
         return firstName;
     }
+
+    /**
+     * set firstName
+     * @param firstName new firstName
+     */
     public void setFirstName(String firstName){
         this.firstName = firstName;
     }
 
+    /**
+     * getting lastName
+     * @return lastName
+     */
     public String getLastName() {
         return lastName;
     }
+
+    /**
+     * set lastName
+     * @param lastName new lastName
+     */
     public void setLastName(String lastName){
         this.lastName = lastName;
     }
 
+    /**
+     * getting Password
+     * @return Password
+     */
     public String getPassword() {
         return password;
     }
+
+    /**
+     * set Password
+     * @param password new Password
+     */
     public void setPassword(String password){
         this.password = password;
     }
 
+    /**
+     * getting PhoneNo
+     * @return PhoneNo
+     */
     public String getPhoneNo(){
         return phoneNo;
     }
+
+    /**
+     * setting PhoneNo
+     * @param phoneNo new PhoneNo
+     */
     public void setPhoneNo(String phoneNo){
         this.phoneNo = phoneNo;
     }
 
     /**
-     * display register prompt for user to register into the system
+     * Display register prompt for user to register into the system
      * then save the info into a file
-     * @method startRegister()
-     * @throws IOException
-     * @params nothing
-     * @returns nothing
-     *
-     * @author Darwisy
+     * @throws IOException If file not found
      */
-
     public void startRegister() throws IOException {
         Registration register = new Registration();
         Scanner input = new Scanner(System.in);
@@ -89,7 +114,6 @@ class Registration{
         
         file = new customerStuff("registerStuff");
         int test = file.getFileReading().length;
-        System.out.println(test);
         if (test ==0){
             file.fileWriting(reg);
         }
@@ -108,6 +132,11 @@ class Registration{
         user.startSystem();
     }
 
+    /**
+     * Setting an array from firstName,lastName,Password,PhoneNo
+     * @param register object from register
+     * @return String[] contains firstName,lastName,Password,PhoneNo
+     */
     public static String[] setArray(Registration register){
         ArrayList<String> arr = new ArrayList<>();
         arr.add(register.getFirstName());
@@ -117,6 +146,5 @@ class Registration{
         String[] x =  arr.toArray(new String[0]);
         return x;
     }
-
 }
 

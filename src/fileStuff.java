@@ -6,19 +6,27 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @class fileStuff
- * @method fileWriting(),..
- *
- *
- * @author Adib
+ * This class is mainly use for writing and reading a file
+ * @author adibrafi
  */
 public class fileStuff {
     private String fileName;
     fileStuff(){}
+
+    /**
+     * Setting a file name
+     * @param fileName The name of the file
+     */
     fileStuff(String fileName){this.fileName = fileName;}
     public String toString(){
         return fileName;
     }
+
+    /**
+     * Writing String[] into a file
+     * @param strings String[] that wanted to put in file
+     * @throws IOException If file Not Found
+     */
     public void fileWriting(String[] strings)throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
         for (int j = 0; j < strings.length; j++) {
@@ -27,6 +35,12 @@ public class fileStuff {
         }
         writer.close();
     }
+
+    /**
+     * getting the element from the file
+     * @return the element contains in the file
+     * @throws IOException If file not found
+     */
     public String[][] getFileReading() throws IOException{
         Scanner input = new Scanner(new File(fileName));
         List<String[]> lines = new ArrayList<>();
@@ -41,11 +55,12 @@ public class fileStuff {
         }
         return result;
     }
-    public String[] getFileReading1row() throws IOException{
-        Scanner input = new Scanner(new File(fileName));
-        String result[] = input.nextLine().split(",");
-        return result;
-    }
+
+    /**
+     * Writing String[][] into a file
+     * @param strings String[][] that wanted to put in the file
+     * @throws IOException If file not found
+     */
     public void fileWriting(String[][] strings) throws IOException{
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
         for (int i = 0; i < strings.length; i++) {
@@ -60,6 +75,10 @@ public class fileStuff {
     }
 }
 
+/**
+ * This class is for modifying a file
+ * @author adibrafi
+ */
 class editStuff extends fileStuff{
     private final String[] name = {"Adib", "Ali", "Darwisy","Raja","Ahmad"};
     private final String[] shop = {"Tesco", "Parkson","Jaya Grocer","Kfry"};
@@ -71,10 +90,20 @@ class editStuff extends fileStuff{
     List<String[]> firstResult = new ArrayList<>();
 
     editStuff(){}
+
+    /**
+     * Setting a file name
+     * @param filename The name of the file
+     */
     editStuff(String filename){
         super(filename);
     }
 
+    /**
+     * Adding a name from 'registerStuff' into a super(fileName)
+     * @return String[] contains the name from 'register' file and super(fileName)
+     * @throws IOException If file not found
+     */
     public String[] setName() throws IOException {
         editStuff e = new editStuff("registerStuff");
         String[][] input = e.getFileReading();
@@ -85,17 +114,20 @@ class editStuff extends fileStuff{
                 newArray.add(input[i][0]+input[i][1]);
             }
             newArray.addAll(Arrays.asList(this.name));
-            System.out.println(newArray);
             return newArray.toArray(new String[0]);
         }
         catch (ArrayIndexOutOfBoundsException ex){
             ArrayList<String> newArray = new ArrayList<>();
             newArray.add(input[0][0]+input[0][1]);
             newArray.addAll(Arrays.asList(this.name));
-            System.out.println(newArray);
             return newArray.toArray(new String[0]);
         }
     }
+
+    /**
+     * Sorting a Date from 'MasterFileAdmin'
+     * @throws IOException If file not found
+     */
     public void sortDate()throws IOException{
         fileStuff f = new fileStuff("MasterFileAdmin");
         String[][] input = f.getFileReading();
@@ -103,8 +135,12 @@ class editStuff extends fileStuff{
         Comparator<String[]> time = Comparator.comparing(row -> row[1]);
         Arrays.sort(input,date.thenComparing(time));
         f.fileWriting(input);
-
     }
+
+    /**
+     * Generate 30 Random Date,Time,Name and shop in 'MasterFileAdmin'
+     * @throws IOException If file not found
+     */
     public void randomGeneratorMaster() throws IOException {
         editStuff e = new editStuff("MasterFileAdmin");
         String[] randomData = e.setName();
@@ -127,6 +163,12 @@ class editStuff extends fileStuff{
         f.fileWriting(finalResult);
 
     }
+
+    /**
+     * Change a status of the Customer
+     * @throws IOException If file not found
+     * @throws ParseException If String cannot be convert into Date
+     */
     public void changeStatus() throws IOException, ParseException {
         fileStuff f;
         editStuff e;
@@ -217,9 +259,22 @@ class editStuff extends fileStuff{
     }
 }
 
+/**
+ * This class is for the use of Customer only
+ */
 class customerStuff extends fileStuff{
     customerStuff(){}
+
+    /**
+     * Setting the file name
+     * @param fileName The name of the file
+     */
     customerStuff(String fileName){super(fileName);}
+
+    /**
+     * Adding an info into 'CustomerFileAdmin'
+     * @throws IOException If file not found
+     */
     public void setInfoIntoAdminFile() throws IOException {
         fileStuff f = new fileStuff("registerStuff");
         String[][] inputFromRegister = f.getFileReading();
@@ -245,6 +300,12 @@ class customerStuff extends fileStuff{
         f=new fileStuff("CustomerFileAdmin");
         f.fileWriting(result);
     }
+
+    /**
+     * Update the customer check-in into 'MasterFileAdmin'
+     * @param arr String[] contains {Date,Time,Name,Shop}
+     * @throws IOException If file not found
+     */
     public void UpdateCheckInShop(String[] arr) throws IOException {
         customerStuff c = new customerStuff("MasterFileAdmin");
         String[][] readFile = c.getFileReading();
@@ -265,4 +326,3 @@ class customerStuff extends fileStuff{
     }
 
 }
-

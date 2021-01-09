@@ -3,11 +3,6 @@ import java.util.Scanner;
 
 /**
  * This is the starting of the program
- * @class Start()
- * @method startSystem()
- * @params nothing
- * @return nothing
- *
  * @author Darwisy
  */
 public class Start {
@@ -15,16 +10,10 @@ public class Start {
         Start s = new Start();
         s.startSystem();
     }
-
     /**
-     * the main menu prompt for the system to know whether the user have an account or no
+     * The main menu prompt for the system to know whether the user have an account or no
      * if no the user will go into registration() to register an account to login into the system
-     * @method startSystem()
-     * @throws IOException
-     * @params nothing
-     * @return startLogin() or startRegister()
-     *
-     * @author Darwisy
+     * @throws IOException If file not Found
      */
     public void startSystem() throws IOException {
         Login x = new Login();
